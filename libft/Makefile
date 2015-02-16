@@ -6,7 +6,7 @@
 #    By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/04 11:00:56 by tcarmet           #+#    #+#              #
-#    Updated: 2015/02/16 18:24:14 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/02/16 19:13:04 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -148,7 +148,7 @@ all: $(NAME)
 
 $(NAME) :
 	@echo "Processing files..."
-	@gcc $(FLAG) -c $(SRC)
+	@gcc $(FLAG) -c $(SRC) -I ./includes
 	@ar rc $(NAME) $(SRC1)
 	@ranlib $(NAME)
 	@echo "$(NAME) has been created !"
