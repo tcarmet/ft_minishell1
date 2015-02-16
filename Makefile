@@ -6,7 +6,7 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/02/16 18:24:37 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/02/16 18:37:12 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,9 +16,9 @@ SRC = srcs/ft_sh.c
 
 SRC1 = ft_sh.o
 
-LIBFT = ./libft_v2/
+LIBFT = ./libft/
 
-LIBFT_A = ./libft_v2/libft.a
+LIBFT_A = ./libft/libft.a
 
 FLAG = -Wall -Werror -Wextra
 
