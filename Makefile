@@ -6,7 +6,7 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/02/19 19:55:49 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/02/19 19:59:22 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -21,6 +21,8 @@ LIBFT = ./libft/
 LIBFT_A = ./libft/libft.a
 
 FLAG = -Wall -Werror -Wextra
+
+COMMIT = $var
 
 all : $(NAME)
 
@@ -45,7 +47,7 @@ git :
 			@echo "enter your commit : "
 			@read var
 			@git add .
-			@git commit -m $var 
+			@git commit -m $(COMMIT) 
 			@git push
 			@echo "PUSHED MOTHA FUCKAAA ! " 
 
