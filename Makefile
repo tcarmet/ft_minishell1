@@ -6,7 +6,7 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/02/19 19:59:22 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/02/19 20:03:36 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -21,8 +21,6 @@ LIBFT = ./libft/
 LIBFT_A = ./libft/libft.a
 
 FLAG = -Wall -Werror -Wextra
-
-COMMIT = $var
 
 all : $(NAME)
 
@@ -44,10 +42,10 @@ fclean :	clean
 			@echo "$(NAME) has been removed !"
 
 git :
-			@echo "enter your commit : "
-			@read var
 			@git add .
-			@git commit -m $(COMMIT) 
+			@echo "enter your commit : "
+			@read var1
+			@git commit -m $var1
 			@git push
 			@echo "PUSHED MOTHA FUCKAAA ! " 
 
