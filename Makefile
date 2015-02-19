@@ -6,7 +6,7 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/02/19 20:19:19 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/02/19 20:19:52 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -45,14 +45,13 @@ fclean :	clean
 			@echo "$(NAME) has been removed !"
 
 commit : 
-		@read var1
-COMMIT = $(shell echo $var1)		
+		@read var1		
 
 git :	commit
 			@git add .
 			@echo "enter your commit : "
 
-			@git commit -m $(COMMIT)
+			@git commit -m $(shell echo $var1)
 			@git push
 			@echo "PUSHED MOTHA FUCKAAA ! " 
 
