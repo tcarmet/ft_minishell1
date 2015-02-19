@@ -6,7 +6,7 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/02/19 20:03:36 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/02/19 20:06:45 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -21,6 +21,8 @@ LIBFT = ./libft/
 LIBFT_A = ./libft/libft.a
 
 FLAG = -Wall -Werror -Wextra
+
+COMMIT ?= "Auto Commit"
 
 all : $(NAME)
 
@@ -44,8 +46,8 @@ fclean :	clean
 git :
 			@git add .
 			@echo "enter your commit : "
-			@read var1
-			@git commit -m $var1
+			@read COMMIT
+			@git commit -m $(COMMIT)
 			@git push
 			@echo "PUSHED MOTHA FUCKAAA ! " 
 
