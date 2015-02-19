@@ -6,7 +6,7 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/02/19 21:21:21 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/02/19 21:22:05 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -49,9 +49,7 @@ re		: fclean all
 
 
 git :
-
 	@git add .
 	@echo "Enter Your Commit : "
 	@read root_path ; git commit -m "$$root_path"
 	@git push
-	
