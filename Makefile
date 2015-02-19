@@ -6,7 +6,7 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/02/19 20:49:31 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/02/19 20:59:29 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -45,19 +45,13 @@ fclean :	clean
 			@rm -rf $(NAME)
 			@echo "$(NAME) has been removed !"
 
-git :
-			@git add .
-			@echo "enter your commit : "
-
-			@git commit -m $$root_path
-			@git push
-			@echo "PUSHED MOTHA FUCKAAA ! " 
-
 re		: fclean all
 
 
-test :
+git :
+
 	@git add .
+	@echo "Enter Your Commit : "
 	@read root_path; \
 	git commit -m $$root_path
 	@git push
