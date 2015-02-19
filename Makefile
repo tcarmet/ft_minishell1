@@ -6,7 +6,7 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/02/16 18:37:12 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/02/19 19:23:40 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -43,7 +43,7 @@ fclean :	clean
 			@echo "$(NAME) has been removed !"
 git :
 			@git add .
-			@git commit -m "$(COMMIT)"
+			@git commit -m $(COMMIT)
 			@git push
 			@echo "PUSHED MOTHA FUCKAAA ! " 
 
