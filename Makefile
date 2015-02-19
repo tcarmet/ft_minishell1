@@ -6,7 +6,7 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/02/19 19:24:29 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/02/19 19:52:33 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -20,11 +20,13 @@ LIBFT = ./libft/
 
 LIBFT_A = ./libft/libft.a
 
-
-
 FLAG = -Wall -Werror -Wextra
 
+
+
 all : $(NAME)
+
+
 
 $(NAME) :
 			@echo "compiling $(NAME)..."
@@ -37,16 +39,16 @@ clean :
 			@rm -rf $(SRC1)
 			@echo "objects files has been removed !"
 
+
 fclean :	clean
 			@Make -C $(LIBFT) fclean
 			@rm -rf $(NAME)
 			@echo "$(NAME) has been removed !"
 
-commit : read
-
 git :
+			@read var1
 			@git add .
-			@git commit -m commit
+			@git commit -m $var1 
 			@git push
 			@echo "PUSHED MOTHA FUCKAAA ! " 
 
