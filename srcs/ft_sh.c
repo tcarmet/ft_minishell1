@@ -6,7 +6,7 @@
 /*   By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 17:24:53 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/02/16 18:12:46 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/02/17 00:45:27 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 
 int		main(int argc, char **argv)
 {
-	pid_t		father;
-//	char *str;
+//	pid_t		father;
+	char *str;
 	
+
 	if (argc == 1)
 	{
-		father = fork();
+
+		str = getcwd(argv[1], ft_strlen(argv[1]));
+		ft_putstr(str);
+		/*father = fork();
 		if (father > 0)
 		{
 //			wait();
@@ -31,6 +35,7 @@ int		main(int argc, char **argv)
 			sleep(5);
 			execve("/bin/ls", argv, NULL);
 		}
+		*/
 	}
 	return (0);
 }

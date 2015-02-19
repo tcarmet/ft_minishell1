@@ -20,6 +20,8 @@ LIBFT = ./libft/
 
 LIBFT_A = ./libft/libft.a
 
+COMMIT = read
+
 FLAG = -Wall -Werror -Wextra
 
 all : $(NAME)
@@ -41,7 +43,7 @@ fclean :	clean
 			@echo "$(NAME) has been removed !"
 git :
 			@git add .
-			@git commit -m " auto commit "
+			@git commit -m "$(COMMIT)"
 			@git push
 			@echo "PUSHED MOTHA FUCKAAA ! " 
 

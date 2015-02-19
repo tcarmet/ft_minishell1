@@ -6,13 +6,13 @@
 /*   By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 18:03:27 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/02/16 18:37:29 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/02/17 00:45:49 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SH_H
 # define FT_SH_H
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 # include <sys/wait.h>
 
 #endif 
