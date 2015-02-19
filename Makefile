@@ -6,7 +6,7 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/02/19 20:12:44 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/02/19 20:13:18 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,7 +22,9 @@ LIBFT_A = ./libft/libft.a
 
 FLAG = -Wall -Werror -Wextra
 
-COMMIT = var1
+COMMIT = $var1
+
+
 
 all : $(NAME)
 
