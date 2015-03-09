@@ -25,13 +25,7 @@ int		main(int argc, char **argv, char **env)
 	// ft_sh_init(&all);
 	ft_stock_env(env, &all);
 	tmp = all.env;
-	while (tmp->next != NULL)
-	{
-		ft_putstr(tmp->var);
-		ft_putchar('=');
-		ft_putendl(tmp->value);
-		tmp = tmp->next;
-	}
+	ft_print_env(tmp);
 	/*while (42)
 	{
 		ft_putstr("$> :");

@@ -64,3 +64,4 @@ void	ft_stock_env(char **envp, t_all *all)
 		i++;
 	}
 }
+

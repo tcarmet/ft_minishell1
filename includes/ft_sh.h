@@ -49,4 +49,8 @@ char			*ft_strlower(char *str);
 ** ft_sh_parse.c
 */
 char			**ft_parse_env(char *env);
+/*
+**	ft_sh_built_env.c
+*/
+void			ft_print_env(t_env	*tmp);
 #endif 
