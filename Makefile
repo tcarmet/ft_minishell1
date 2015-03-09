@@ -6,7 +6,7 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/03/09 15:25:04 by tcoppin          ###   ########.fr        #
+#    Updated: 2015/03/09 15:54:03 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,21 +23,17 @@ OBJ 		= $(SRC:.c=.o)
 INC 		= ft_sh.h
 LIBFLAGS 	= -L./libft/ -lft
 SRCDIR  	= ./srcs/
-OBJDIR  	= ./objs/
+OBJDIR  	= ./
 INCDIR		= ./includes/
 SRCS    	= $(addprefix $(SRCDIR), $(SRC))
 OBJS    	= $(addprefix $(OBJDIR), $(OBJ))
 INCS 		= $(addprefix $(INCDIR), $(INC))
 
+.SILENT:
+
 all : 		$(NAME)
 
-$(NAME) :	$(OBJS) $(INCS)
-			echo "compiling $(NAME)..."
-			Make -C libft/
-			gcc $(FLAG) -o $@ $^ $(LIBFLAGS)
-			echo "$(NAME) has been created !"
-
-$(OBJS):	$(SRCS)
+$(NAME) :	$(INCS)
 ifeq ($(DEBUG),yes)
         echo "\\033[1;31mDEBUG COMPILATION.. (no flags except -g)\\033[0;39m"
 else
@@ -45,8 +41,10 @@ else
 endif
 		echo "\\033[1;34mGenerating objects... Please wait.\\033[0;39m"
 			gcc $(FLAG) -c $(SRCS) $(LIBFLAGS)
-			mkdir -p $(OBJDIR)
-			mv $(OBJ) $(OBJDIR)
+			echo "compiling $(NAME)..."
+			Make -C libft/
+			gcc $(FLAG) -o $(NAME) $(OBJS) $(LIBFLAGS)
+			echo "$(NAME) has been created !"
 
 .PHONY: 	clean fclean re
 
@@ -64,7 +62,7 @@ re		: 	fclean all
 
 
 git :
-			@git add .
-			@echo "Enter Your Commit : "
-			@read root_path ; git commit -m "$$root_path"
-			@git push
+			git add .
+			echo "Enter Your Commit : "
+			read root_path ; git commit -m "$$root_path"
+			git push
