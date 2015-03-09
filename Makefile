@@ -6,11 +6,11 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/02/26 23:23:14 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/03/09 15:25:04 by tcoppin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-NAME 		= ft_sh1
+NAME 		= ft_minishell1
 
 DEBUG 		= no
 ifeq ($(DEBUG),no)
