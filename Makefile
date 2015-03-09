@@ -6,24 +6,25 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/03/09 15:54:03 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/03/09 21:09:30 by tcoppin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME 		= ft_minishell1
 
-DEBUG 		= no
+DEBUG 		= yes
 ifeq ($(DEBUG),no)
-    FLAGS	=-Wall -Wextra -Werror
+    FLAGS	=-Wall -Werror -Wextra
 else
     FLAGS	=-g
 endif
-SRC 		= ft_sh.c
+SRC 		= ft_sh.c ft_sh_env.c ft_sh_parse.c
 OBJ 		= $(SRC:.c=.o)
 INC 		= ft_sh.h
 LIBFLAGS 	= -L./libft/ -lft
 SRCDIR  	= ./srcs/
 OBJDIR  	= ./
+INCDIRLIB	= ./libft/includes/
 INCDIR		= ./includes/
 SRCS    	= $(addprefix $(SRCDIR), $(SRC))
 OBJS    	= $(addprefix $(OBJDIR), $(OBJ))
@@ -35,15 +36,15 @@ all : 		$(NAME)
 
 $(NAME) :	$(INCS)
 ifeq ($(DEBUG),yes)
-        echo "\\033[1;31mDEBUG COMPILATION.. (no flags except -g)\\033[0;39m"
+		echo "\\033[1;31mDEBUG COMPILATION.. (no flags except -g)\\033[0;39m"
 else
 		echo "\\033[1;31mCompilation with -Wall -Wextra -Werror...\\033[0;39m"
 endif
 		echo "\\033[1;34mGenerating objects... Please wait.\\033[0;39m"
-			gcc $(FLAG) -c $(SRCS) $(LIBFLAGS)
+			gcc $(FLAGS) -c $(SRCS) -I$(INCDIR) $(LIBFLAGS) -I$(INCDIRLIB)
 			echo "compiling $(NAME)..."
 			Make -C libft/
-			gcc $(FLAG) -o $(NAME) $(OBJS) $(LIBFLAGS)
+			gcc $(FLAGS) -o $(NAME) $(OBJS) $(LIBFLAGS)
 			echo "$(NAME) has been created !"
 
 .PHONY: 	clean fclean re

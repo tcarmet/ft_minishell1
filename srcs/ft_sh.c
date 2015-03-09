@@ -6,36 +6,39 @@
 /*   By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 17:24:53 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/02/17 00:45:27 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/03/09 16:42:42 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "../includes/ft_sh.h"
+#include "ft_sh.h"
 
-int		main(int argc, char **argv)
+int		main(int argc, char **argv, char **env)
 {
-//	pid_t		father;
-	char *str;
-	
+	t_all	all;
+	char	*line;
+	t_env	*tmp;
 
-	if (argc == 1)
+	(void)argv;
+	(void)argc;
+	line = NULL;
+	// ft_sh_init(&all);
+	ft_stock_env(env, &all);
+	tmp = all.env;
+	while (tmp->next != NULL)
 	{
-
-		str = getcwd(argv[1], ft_strlen(argv[1]));
-		ft_putstr(str);
-		/*father = fork();
-		if (father > 0)
-		{
-//			wait();
-			printf("I M YOUR FATHER\n");
-		}
-		if (father == 0)
-		{
-			sleep(5);
-			execve("/bin/ls", argv, NULL);
-		}
-		*/
+		ft_putstr(tmp->var);
+		ft_putchar('=');
+		ft_putendl(tmp->value);
+		tmp = tmp->next;
 	}
+	/*while (42)
+	{
+		ft_putstr("$> :");
+		get_next_line(0, &line);
+
+		ft_putendl(line);
+	}*/
 	return (0);
 }
+

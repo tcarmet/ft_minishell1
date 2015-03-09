@@ -6,7 +6,7 @@
 /*   By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/26 22:31:02 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/02/26 22:47:25 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/03/09 16:16:41 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int		main(int ac, char **av, char **env)
 	t_list 	*env_list;
 	char 	*cmd;
 
-	
 	env_list = env_to_list(env);
 	while(42)
 	{
