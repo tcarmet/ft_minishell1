@@ -14,6 +14,6 @@
 
 void	ft_sh_init(t_all *all)
 {
-	// init les variables
+	all->env = NULL;
 }
 

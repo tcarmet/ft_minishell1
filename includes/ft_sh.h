@@ -29,6 +29,10 @@ typedef struct	s_all
 }				t_all;
 
 
+typedef enum 	e_error
+{
+	SYSCALL,
+}				t_error;
 
 /*
 **	ft_sh_init.c
@@ -45,6 +49,7 @@ void			ft_stock_env(char **env, t_all *all);
 ** ft_sh_misc.c
 */
 char			*ft_strlower(char *str);
+void			ft_sh_error(int i, char *str);
 /*
 ** ft_sh_parse.c
 */
@@ -52,5 +57,14 @@ char			**ft_parse_env(char *env);
 /*
 **	ft_sh_built_env.c
 */
-void			ft_print_env(t_env	*tmp);
+void			ft_print_env(t_all	*all);
+/*
+**	ft_sh.c
+*/
+void			parse_cmd(char *cmd, t_all *all);
+/*
+**	ft_sh_builtin.c
+*/
+int				ft_is_builtin(char *str);
+void			ft_exec_builtin(char *str, t_all *all);
 #endif 

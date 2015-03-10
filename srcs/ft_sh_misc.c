@@ -17,10 +17,22 @@ char	*ft_strlower(char *str)
 	int i;
 
 	i = 0;
-	while (str)
+	while (str[i])
 	{
-		str[i] = ft_tolower(str[i]);
+		if (str[i] >= 65 && str[i] <= 90)
+			str[i] = str[i] + 32;
+		else
+			str[i] = str[i];
 		i++;
 	}
 	return (str);
+}
+
+void	ft_sh_error(int i, char *str)
+{
+	if (i == SYSCALL)
+	{
+		ft_putstr_fd("ft_minishell1 : command not found: ", 2);
+		ft_putendl_fd(str, 2);
+	}
 }

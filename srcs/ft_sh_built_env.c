@@ -12,8 +12,11 @@
 
 #include "ft_sh.h"
 
-void	ft_print_env(t_env	*tmp)
+void	ft_print_env(t_all	*all)
 {
+	t_env	*tmp;
+
+	tmp = all->env;
 	while (tmp != NULL)
 	{
 		ft_putstr(tmp->var);
