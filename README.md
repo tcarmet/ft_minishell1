@@ -6,7 +6,7 @@ Work in progress
 - exit
 - setenv
 - unsetenv
-- cd
+- cd + option -> -1, -s
 - signal (bonus) ctrl c, ctrl d
 - init env, si env == null
 - leaks
