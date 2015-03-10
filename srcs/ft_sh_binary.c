@@ -73,6 +73,7 @@ void	ft_exec_binary(char **str, t_all *all)
 	{
 		if ((execve(all->path, str, all->array)) < 0)
 			ft_sh_error(EXEC_ERROR, "");
+		ft_strdel(all->array);
 	}
 	else
 		wait(NULL);

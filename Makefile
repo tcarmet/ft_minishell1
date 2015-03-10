@@ -6,7 +6,7 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/03/10 15:44:53 by tcoppin          ###   ########.fr        #
+#    Updated: 2015/03/10 19:10:41 by tcoppin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,7 +14,7 @@ NAME 		= ft_minishell1
 
 DEBUG 		= no
 ifeq ($(DEBUG),no)
-    FLAGS	=-Wall -Werror -Wextra -g
+    FLAGS	=-Wall -Werror -Wextra
 else
     FLAGS	=-g
 endif

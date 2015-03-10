@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_sh_cd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/05 13:08:54 by tcarmet           #+#    #+#             */
-/*   Updated: 2014/11/25 14:50:44 by tcarmet          ###   ########.fr       */
+/*   Created: 2015/03/10 16:39:01 by tcoppin           #+#    #+#             */
+/*   Updated: 2015/03/10 16:39:02 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_sh.h"
 
-char		*ft_strdup(char const *s1)
+void	ft_sh_cd(char **str, t_all *all)
 {
-	char	*str;
-	int		i;
+	char 	*pwd;
+	t_env	*tmp;
 
-	if (s1)
-	{
-		str = ft_strnew(ft_strlen(s1));
-		if (str)
-		{
-			i = 0;
-			while (s1[i])
-			{
-				str[i] = s1[i];
-				i++;
-			}
-			return (str);
-		}
-	}
-	return (NULL);
+	tmp = all->env;
+	while (tmp->next != NULL && ft_strequ("PWD", tmp->var) != 1)
+		tmp = tmp->next;
+	pwd = ft_strdup(tmp->value);
+	
+
 }

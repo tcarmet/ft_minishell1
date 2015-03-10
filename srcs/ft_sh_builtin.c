@@ -32,12 +32,12 @@ void	ft_exec_builtin(char **str, t_all *all)
 {
 	if (ft_strequ("env", str[0]))
 		ft_print_env(all);
-	// else if (ft_strequ("cd", str))
-	// 	return (1);
-	// else if (ft_strequ("setenv", str))
-	// 	return (1);
-	// else if (ft_strequ("unsetenv", str))
-	// 	return (1);
+	else if (ft_strequ("setenv", str[0]))
+		ft_sh_setenv(str, all);
+	else if (ft_strequ("unsetenv", str[0]))
+		ft_sh_unsetenv(str, all);
 	// else if (ft_strequ("exit", str))
 	// 	return (1);
+	// else if (ft_strequ("cd", str))
+	// 	ft_sh_cd();
 }

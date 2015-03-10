@@ -37,6 +37,7 @@ typedef enum 	e_error
 	SYSCALL,
 	SYSPID,
 	EXEC_ERROR,
+	ARG_ENV,
 }				t_error;
 
 /*
@@ -63,6 +64,9 @@ char			**ft_parse_env(char *env);
 **	ft_sh_built_env.c
 */
 void			ft_print_env(t_all	*all);
+void			ft_sh_setenv(char **str, t_all *all);
+int				ft_setenv_check(char **str, t_all *all);
+int				ft_sh_unsetenv(char **str, t_all *all);
 /*
 **	ft_sh.c
 */
@@ -77,4 +81,9 @@ void			ft_exec_builtin(char **str, t_all *all);
 */
 int				ft_is_binary(char *str, t_all *all);
 void			ft_exec_binary(char **str, t_all *all);
+void			ft_env_to_array(t_all *all);
+/*
+**	ft_sh_cd.c
+*/
+void			ft_sh_cd(char **str, t_all *all);
 #endif 
