@@ -28,9 +28,9 @@ int		ft_is_builtin(char *str)
 		return (0);
 }
 
-void	ft_exec_builtin(char *str, t_all *all)
+void	ft_exec_builtin(char **str, t_all *all)
 {
-	if (ft_strequ("env", str))
+	if (ft_strequ("env", str[0]))
 		ft_print_env(all);
 	// else if (ft_strequ("cd", str))
 	// 	return (1);

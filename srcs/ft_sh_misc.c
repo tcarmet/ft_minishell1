@@ -35,4 +35,12 @@ void	ft_sh_error(int i, char *str)
 		ft_putstr_fd("ft_minishell1 : command not found: ", 2);
 		ft_putendl_fd(str, 2);
 	}
+	else if (i == SYSPID)
+	{
+		ft_putendl_fd("plop", 2);
+	}
+	else if (i == EXEC_ERROR)
+	{
+		ft_putendl_fd("EXEC_ERROR", 2);
+	}
 }

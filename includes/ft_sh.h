@@ -13,6 +13,7 @@
 #ifndef FT_SH_H
 # define FT_SH_H
 # include "libft.h"
+# include <sys/stat.h>
 # include <sys/wait.h>
 
 typedef struct	s_env
@@ -26,12 +27,16 @@ typedef struct	s_env
 typedef struct	s_all
 {
 	t_env		*env;
+	char 		*path;
+	char		**array;
 }				t_all;
 
 
 typedef enum 	e_error
 {
 	SYSCALL,
+	SYSPID,
+	EXEC_ERROR,
 }				t_error;
 
 /*
@@ -66,5 +71,10 @@ void			parse_cmd(char *cmd, t_all *all);
 **	ft_sh_builtin.c
 */
 int				ft_is_builtin(char *str);
-void			ft_exec_builtin(char *str, t_all *all);
+void			ft_exec_builtin(char **str, t_all *all);
+/*
+**	ft_sh_binary.c
+*/
+int				ft_is_binary(char *str, t_all *all);
+void			ft_exec_binary(char **str, t_all *all);
 #endif 

@@ -18,25 +18,25 @@ void	parse_cmd(char *cmd, t_all *all)
 	char **cmd_array;
 	char **cmd_all;
 	int i;
-	int j;
+	//int j;
 
 	i = 0;
 	cmd_all = ft_strsplit(cmd, ';');
 	while (cmd_all[i])
 	{
 		cmd_array = ft_strsplit(cmd_all[i], ' ');
-		j = 0;
-		while (cmd_array[j])
-		{
-			cmd_array[j] = ft_strlower(cmd_array[j]);
-			if (ft_is_builtin(cmd_array[j]))
-				ft_exec_builtin(cmd_array[j], all);
-			// else if (IS_BINARY(cmd_array[0])
-			// 	exec_binary(cmd_array);
+		//j = 0;
+		//while (cmd_array[j])
+		//{
+			cmd_array[0] = ft_strlower(cmd_array[0]);
+			if (ft_is_builtin(cmd_array[0]))
+				ft_exec_builtin(cmd_array, all);
+			else if (ft_is_binary(cmd_array[0], all))
+				ft_exec_binary(cmd_array, all);
 			else
-				ft_sh_error(SYSCALL, cmd_array[j]);
-			j++;
-		}
+				ft_sh_error(SYSCALL, cmd_array[0]);
+			//j++;
+		//}
 		i++;
 	}
 }

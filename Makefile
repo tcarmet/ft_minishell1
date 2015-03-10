@@ -6,7 +6,7 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/03/10 13:07:40 by tcoppin          ###   ########.fr        #
+#    Updated: 2015/03/10 15:44:53 by tcoppin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -19,7 +19,7 @@ else
     FLAGS	=-g
 endif
 SRC 		= ft_sh.c ft_sh_env.c ft_sh_parse.c ft_sh_built_env.c ft_sh_init.c \
-			ft_sh_builtin.c ft_sh_misc.c
+			ft_sh_builtin.c ft_sh_misc.c ft_sh_binary.c
 OBJ 		= $(SRC:.c=.o)
 INC 		= ft_sh.h
 LIBFLAGS 	= -L./libft/ -lft
