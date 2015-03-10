@@ -3,6 +3,8 @@ Work in progress
 
 # TO DO LIST
 
+
+- env, argument a gerer
 - exit
 - setenv
 - unsetenv
