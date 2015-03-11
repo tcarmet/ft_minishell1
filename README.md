@@ -12,5 +12,5 @@ Work in progress
 - signal (bonus) ctrl c, ctrl d
 - init env, si env == null
 - leaks
-- split les tab
+- split les tab -> done
 
