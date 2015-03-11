@@ -37,6 +37,7 @@ void	ft_env_to_array(t_all *all)
 		count++;
 		tmp = tmp->next;
 	}
+	all->array[count] = NULL;
 }
 
 int		ft_is_binary(char *str, t_all *all)
@@ -71,8 +72,9 @@ void	ft_exec_binary(char **str, t_all *all)
 		ft_sh_error(SYSPID, "");
 	if (pid == 0)
 	{
-		if ((execve(all->path, str, all->array)) < 0)
+		if (execve(all->path, str, all->array) < 0)
 			ft_sh_error(EXEC_ERROR, "");
+		ft_strdel(&all->path);
 		ft_strdel(all->array);
 	}
 	else
