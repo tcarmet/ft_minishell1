@@ -36,7 +36,7 @@ void	ft_exec_builtin(char **str, t_all *all)
 		ft_sh_setenv(str, all);
 	else if (ft_strequ("unsetenv", str[0]))
 		ft_sh_unsetenv(str, all);
-	else if (ft_strequ("exit", str[0]
+	else if (ft_strequ("exit", str[0]))
 		exit(0);
 	// else if (ft_strequ("cd", str))
 	// 	ft_sh_cd();
