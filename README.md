@@ -5,9 +5,9 @@ Work in progress
 
 
 - env, argument a gerer
-- exit
-- setenv
-- unsetenv
+- exit -> done ( a checker ) 
+- setenv -> done
+- unsetenv -> done
 - cd + option -> -1, -s
 - signal (bonus) ctrl c, ctrl d
 - init env, si env == null
