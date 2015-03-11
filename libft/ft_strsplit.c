@@ -6,72 +6,73 @@
 /*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/12 16:57:19 by tcarmet           #+#    #+#             */
-/*   Updated: 2014/11/27 13:49:15 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/03/11 20:12:35 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	char	**ft_mallocwords(char const *s, char c, int *start)
+static int		is_del(char c, char ch)
 {
-	int		size;
-	size_t	nbwords;
-	int		i;
-	char	**split;
+	if (c == ch)
+		return (1);
+	return (0);
+}
 
-	if (s == NULL)
-		return (NULL);
-	*start = -1;
-	size = ft_strlen(s);
-	nbwords = 0;
-	i = 0;
-	while (i < (size - 1))
+static int		find_nb_w(char *str, char ch)
+{
+	int result;
+
+	result = 0;
+	while (*str)
 	{
-		if (s[i] == c && s[i + 1] != c)
-			nbwords++;
-		i++;
+		while (is_del(*str, ch))
+			str++;
+		if (*str)
+			result++;
+		while (!is_del(*str, ch) && *str)
+			str++;
 	}
-	split = (char **)malloc(sizeof(*split) * (nbwords + 1));
-	return (split);
+	return (result);
 }
 
-static	void	ft_initvar(int *start, size_t *nbelem)
+static char		**split_func(char *str, int nb_words, int *i, char ch)
 {
-	*start = -1;
-	*nbelem = 0;
-}
+	int		i3;
+	int		word_size;
+	char	**result;
 
-static	void	test(char const *s, size_t *nbelem, int *start, int *i)
-{
-	(*nbelem)++;
-	(*start == -1 && s[*i] != '\0') ? (*start = *i) : *start;
+	if (!(result = malloc(sizeof(char*) * (nb_words + 1))))
+		return (NULL);
+	while (i[0] < nb_words)
+	{
+		while (is_del(str[i[1]], ch))
+			i[1]++;
+		word_size = 0;
+		while (!is_del(str[i[1] + word_size], ch) && str[i[1] + word_size])
+			word_size++;
+		if (!(result[i[0]] = malloc(sizeof(char) * (word_size + 1))))
+			return (NULL);
+		i3 = -1;
+		while (++i3 < word_size)
+			result[i[0]][i3] = str[i[1] + i3];
+		result[i[0]][i3] = '\0';
+		i[1] += word_size;
+		i[0]++;
+	}
+	result[i[0]] = '\0';
+	return (result);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
-	int		i;
-	int		j;
-	int		start;
-	char	**split;
-	size_t	nbelem;
+	int i[2];
 
-	if (!(split = ft_mallocwords(s, c, &start)))
-		return (NULL);
-	j = 0;
-	i = 0;
-	nbelem = 0;
-	while (s[i])
+	if (s && c)
 	{
-		if (s[i] != c || s[i] == '\0')
-			test(s, &nbelem, &start, &i);
-		if ((s[i] == c || s[i + 1] == '\0') && start >= 0)
-		{
-			split[j] = ft_strnew(nbelem);
-			split[j++] = ft_strsub(s, start, nbelem);
-			ft_initvar(&start, &nbelem);
-		}
-		i++;
+		i[0] = 0;
+		i[1] = 0;
+		return (split_func((char*)s, find_nb_w((char*)s, c), i, c));
 	}
-	split[j] = 0;
-	return (split);
+	return (NULL);
 }

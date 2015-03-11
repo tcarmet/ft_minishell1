@@ -42,9 +42,10 @@ void	ft_sh_push(t_all *all, t_env *env)
 	else
 	{
 		tmp = all->env;
-		while (tmp->next != NULL)
+		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = env;
+		tmp = NULL;
 	}
 }
 
@@ -57,6 +58,7 @@ void	ft_stock_env(char **envp, t_all *all)
 	i = 0;
 	while (envp[i])
 	{
+		env = NULL;
 		env_tab = ft_parse_env(envp[i]);
 		env = env_fill(env_tab[0], env_tab[1]);
 		free(env_tab);

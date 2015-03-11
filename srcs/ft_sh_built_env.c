@@ -31,11 +31,11 @@ int		ft_setenv_check(char **str, t_all *all)
 	t_env	*tmp;
 
 	tmp = all->env;
-	while (tmp != NULL)
+	while (tmp)
 	{
 		if (ft_strequ(tmp->var, str[1]))
 		{
-			ft_strdel(&tmp->value);
+			free(tmp->value);
 			tmp->value = ft_strdup(str[2]);
 			return (1);
 		}
@@ -44,19 +44,30 @@ int		ft_setenv_check(char **str, t_all *all)
 	return (0);
 }
 
+static size_t	ft_strlen_tab(char **tab)
+{
+	int i;
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
+}
+
 void	ft_sh_setenv(char **str, t_all *all)
 {
 	t_env	*tmp;
+	size_t len;
 
-	if (!str[1])
+	len = ft_strlen_tab(str);
+	if (len == 1)
 		ft_print_env(all);
-	else if (str[3])
-		ft_sh_error(ARG_ENV, "");
+	else if (len > 3)
+		ft_sh_error(ARG_ENV, "\0");
 	else if (ft_setenv_check(str, all))
 		;
-	else if (!str[2])
+	else if (len <= 2)
 	{
-		tmp = env_fill(str[1], "");
+		tmp = env_fill(str[1], "\0");
 		ft_sh_push(all, tmp);
 	}
 	else
@@ -73,6 +84,8 @@ int		ft_sh_unsetenv(char **str, t_all *all)
 	int		i;
 
 	i = 1;
+	if (!str[i])
+		ft_sh_error(UNSET_ARG, "\0");
 	while (str[i])
 	{
 		prev = all->env;
@@ -92,6 +105,7 @@ int		ft_sh_unsetenv(char **str, t_all *all)
 			prev = tmp;
 			tmp = tmp->next;
 		}
+		prev = NULL;
 		i++;
 	}
 	return (0);

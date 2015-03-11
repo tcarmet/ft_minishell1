@@ -15,6 +15,7 @@
 # include "libft.h"
 # include <sys/stat.h>
 # include <sys/wait.h>
+# include <signal.h>
 
 typedef struct	s_env
 {
@@ -34,10 +35,11 @@ typedef struct	s_all
 
 typedef enum 	e_error
 {
-	SYSCALL,
+	SYSCALL = 1,
 	SYSPID,
 	EXEC_ERROR,
 	ARG_ENV,
+	UNSET_ARG,
 }				t_error;
 
 /*
@@ -56,6 +58,7 @@ void			ft_stock_env(char **env, t_all *all);
 */
 char			*ft_strlower(char *str);
 void			ft_sh_error(int i, char *str);
+char			*ft_leave_tab(char *cmd);
 /*
 ** ft_sh_parse.c
 */

@@ -41,4 +41,20 @@ void	ft_sh_error(int i, char *str)
 		ft_putendl_fd("EXEC_ERROR", 2);
 	else if (i == ARG_ENV)
 		ft_putendl_fd("setenv: Too many arguments.", 2);
+	else if (i == UNSET_ARG)
+		ft_putendl_fd("unsetenv: Too few arguments.", 2);
+}
+
+char	*ft_leave_tab(char *cmd)
+{
+	int i;
+
+	i = 0;
+	while (cmd[i])
+	{
+		if (cmd[i] == '\t')
+			cmd[i] = ' ';
+		i++;
+	}
+	return (cmd);
 }

@@ -5,95 +5,82 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/29 13:50:58 by tcarmet           #+#    #+#             */
-/*   Updated: 2014/12/29 17:33:47 by tcarmet          ###   ########.fr       */
+/*   Created: 2015/03/11 16:34:08 by tcarmet           #+#    #+#             */
+/*   Updated: 2015/03/11 16:34:08 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "libft.h"
 
-static int		check_stock(char **stock, char ***line, char *buffer)
+static int	check_reserve(char **reserve, char ***line)
 {
-	char *ptr;
+	char	*ptr;
+	char	*tmp;
 
-	if (*stock == NULL)
-		*stock = ft_strnew(1);
-	if (*stock)
-		if ((ptr = ft_strchr(*stock, '\n')))
+	tmp = NULL;
+	if (*reserve == NULL)
+		*reserve = (char*)malloc(sizeof(char) * 2);
+	if (*reserve)
+		if ((ptr = ft_strchr(*reserve, '\n')))
 		{
 			*ptr = '\0';
-			**line = ft_strjoin(*stock, buffer);
-			free(*stock);
-			*stock = ft_strdup(ptr + 1);
-			ft_bzero(buffer, BUFF_SIZE + 1);
-			free(buffer);
+			**line = ft_strdup(*reserve);
+			tmp = *reserve;
+			*reserve = ft_strdup(ptr + 1);
+			free(tmp);
 			return (1);
 		}
 	return (0);
 }
 
-static int		check_tmp(char *tmp, char ***line, char **stock, char *buffer)
-{
-	if (tmp)
-	{
-		*tmp = '\0';
-		**line = ft_strjoin(*stock, buffer);
-		free(*stock);
-		*stock = ft_strdup(tmp + 1);
-		ft_bzero(buffer, BUFF_SIZE + 1);
-		free(buffer);
-		return (1);
-	}
-	return (-1);
-}
-
-static int		ft_return(int ret, char *stock, char ***line)
+static int	what_return(int ret, char **reserve, char ***line)
 {
 	if (ret < 0)
 		return (-1);
-	if (stock == NULL)
+	if (*reserve == NULL)
 		return (0);
-	**line = ft_strdup(stock);
-	free(stock);
+	**line = ft_strdup(*reserve);
 	return (0);
 }
 
-static int		ft_checkdown(char ***line, char **stock)
+static int	econom(char **reserve, char **ptr, char **ptr2, char ***line)
 {
-	if (*stock)
-	{
-		**line = ft_strdup(*stock);
-		ft_strdel(*&stock);
-		return (0);
-	}
-	else
-		return (-1);
+	char	*tmp;
+
+	**ptr = '\0';
+	**line = ft_strjoin(*reserve, *ptr2);
+	tmp = *reserve;
+	*reserve = ft_strdup(*ptr + 1);
+	free(tmp);
+	free(*ptr2);
+	return (1);
 }
 
-int				get_next_line(int const fd, char **line)
+int			get_next_line(int const fd, char **line)
 {
-	static char *stock[256];
-	char		*ptr;
-	char		*tmp;
-	char		*buffer;
+	static char	*reserve[256];
+	char		*ptr[3];
 	int			ret;
 
-	buffer = ft_strnew(BUFF_SIZE + 1);
-	if ((check_stock(&stock[fd], &line, buffer)) == 1)
-		return (1);
-	while ((ret = read(fd, buffer, BUFF_SIZE)) > 0)
+	if (!line)
+		return (-1);
+	ptr[2] = (char*)malloc(sizeof(char) * BUFF_SIZE + 1);
+	if ((check_reserve(&reserve[fd], &line)) == 1)
 	{
-		buffer[ret] = '\0';
-		tmp = ft_strchr(buffer, '\n');
-		if ((check_tmp(tmp, &line, &stock[fd], buffer)) == 1)
-			return (1);
-		ptr = stock[fd];
-		stock[fd] = ft_strjoin(stock[fd], buffer);
-		free(ptr);
+		free(ptr[2]);
+		return (1);
 	}
-	if (ret < 0)
-		return (ft_return(ret, stock[fd], &line));
-	if ((ft_checkdown(&line, &stock[fd])) == 0)
-		return (0);
-	return (ft_return(ret, stock[fd], &line));
+	while ((ret = read(fd, ptr[2], BUFF_SIZE)) > 0)
+	{
+		ptr[2][ret] = '\0';
+		ptr[1] = ft_strchr(ptr[2], '\n');
+		if (ptr[1])
+			if ((econom(&reserve[fd], &ptr[1], &ptr[2], &line) == 1))
+				return (1);
+		ptr[0] = reserve[fd];
+		reserve[fd] = ft_strjoin(reserve[fd], ptr[2]);
+		free(ptr[0]);
+	}
+	return (what_return(ret, &reserve[fd], &line));
 }

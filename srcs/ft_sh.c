@@ -22,18 +22,23 @@ void	parse_cmd(char *cmd, t_all *all)
 	i = 0;
 	cmd_all = ft_strsplit(cmd, ';');
 	while (cmd_all[i])
-	{
+	{	
+		cmd_all[i] = ft_leave_tab(cmd_all[i]);
 		cmd_array = ft_strsplit(cmd_all[i], ' ');
-		cmd_array[0] = ft_strlower(cmd_array[0]);
-		if (ft_is_builtin(cmd_array[0]))
-			ft_exec_builtin(cmd_array, all);
-		else if (ft_is_binary(cmd_array[0], all))
-			ft_exec_binary(cmd_array, all);
-		else
-			ft_sh_error(SYSCALL, cmd_array[0]);
-		ft_strdel(cmd_array);
+		if (cmd_array[0])
+		{
+			cmd_array[0] = ft_strlower(cmd_array[0]);
+			if (ft_is_builtin(cmd_array[0]))
+				ft_exec_builtin(cmd_array, all);
+			else if (ft_is_binary(cmd_array[0], all))
+				ft_exec_binary(cmd_array, all);
+			else
+				ft_sh_error(SYSCALL, cmd_array[0]);
+			free(cmd_array);
+		}
 		i++;
 	}
+	free(cmd_all);
 }
 
 int		main(int argc, char **argv, char **env)
@@ -51,7 +56,7 @@ int		main(int argc, char **argv, char **env)
 		ft_putstr("$> : ");
 		get_next_line(0, &line);
 		parse_cmd(line, &all);
-		ft_strdel(&line);
+		free(line);
 	}
 	return (0);
 }

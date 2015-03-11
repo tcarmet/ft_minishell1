@@ -20,20 +20,21 @@ void	ft_env_to_array(t_all *all)
 
 	count = 0;
 	tmp = all->env;
-	while (tmp->next != NULL)
+	while (tmp->next)
 	{
 		count++;
 		tmp = tmp->next;
 	}
-	all->array = (char **)malloc(sizeof(char **) * (count + 1));
+	all->array = (char **)malloc(sizeof(char *) * (count));
 	count = 0;
 	tmp = all->env;
-	while (tmp != NULL)
+	while (tmp)
 	{
 		len = 0;
 		len = ft_strlen(tmp->var);
 		len += ft_strlen(tmp->value);
-		all->array[count] = ft_strjoin3(tmp->var, "=", tmp->value);
+		all->array[count] = ft_strjoin(tmp->var, "=");
+		all->array[count] = ft_strjoin(all->array[count], tmp->value);
 		count++;
 		tmp = tmp->next;
 	}
@@ -49,16 +50,19 @@ int		ft_is_binary(char *str, t_all *all)
 
 	i = 0;
 	tmp = all->env;
-	while (tmp->next != NULL && ft_strequ("PATH", tmp->var) != 1)
+	while (tmp->next && ft_strequ("PATH", tmp->var) != 1)
 		tmp = tmp->next;
 	split = ft_strsplit(tmp->value, ':');
 	while (split[i])
 	{
-		all->path = ft_strjoin3(split[i], "/", str);
+		all->path = ft_strjoin(split[i], "/");
+		all->path = ft_strjoin(all->path, str);
 		if (lstat(all->path, &stat) >= 0)
 			return (1);
 		i++;
 	}
+	free(split);
+	tmp = NULL;
 	return (0);
 }
 
@@ -69,13 +73,13 @@ void	ft_exec_binary(char **str, t_all *all)
 	ft_env_to_array(all);
 	pid = fork();
 	if (pid < 0)
-		ft_sh_error(SYSPID, "");
+		ft_sh_error(SYSPID, "\0");
 	if (pid == 0)
 	{
 		if (execve(all->path, str, all->array) < 0)
-			ft_sh_error(EXEC_ERROR, "");
-		ft_strdel(&all->path);
-		ft_strdel(all->array);
+			ft_sh_error(EXEC_ERROR, "\0");
+		free(all->path);
+		free(all->array);
 	}
 	else
 		wait(NULL);
