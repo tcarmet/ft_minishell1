@@ -78,6 +78,7 @@ SRC = ft_atoi.c\
 	ft_swapchar.c\
 	ft_swapint.c\
 	ft_strjoin3.c\
+	ft_strjoin_free.c\
 
 SRC1 = ft_atoi.o\
 	ft_strcmp.o\
@@ -143,6 +144,7 @@ SRC1 = ft_atoi.o\
 	ft_swapchar.o\
 	ft_swapint.o\
 	ft_strjoin3.o\
+	ft_strjoin_free.o\
 
 all: $(NAME)
 

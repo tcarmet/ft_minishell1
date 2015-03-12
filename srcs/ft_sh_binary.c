@@ -6,41 +6,11 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/10 14:54:50 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/03/10 14:55:05 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/03/12 15:24:42 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh.h"
-
-char	*ft_strjoin_free(char *s1, char *s2)
-{
-	char	*n;
-	int		i;
-	int		j;
-
-	i = 0;
-	while (s1[i])
-		i++;
-	j = 0;
-	while (s2[j])
-		j++;
-	n = (char *)malloc(sizeof(char) * (i + j + 1));
-	i = 0;
-	while (s1[i])
-	{
-		n[i] = s1[i];
-		i++;	
-	}
-	free(s1);
-	j = 0;
-	while (s2[j])
-	{
-		n[i + j] = s2[j];
-		j++;	
-	}
-	n[i + j] = '\0';
-	return (n);
-}
 
 void	free_tb(char ***s)
 {
@@ -129,8 +99,6 @@ void	ft_exec_binary(char **str, t_all *all)
 			ft_sh_error(EXEC_ERROR, "\0");
 	}
 	else
-	{
 		wait(&pid);
-		free_tb(&all->array);
-	}
+
 }

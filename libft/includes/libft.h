@@ -87,5 +87,6 @@ void				ft_swapint(int *a, int *b);
 void				ft_swapchar(char *a, char *b);
 char				*ft_strjoin3(char const *s1,
 								char const *s2, char const *s3);
+char				*ft_strjoin_free(char *s1, char *s2);
 
 #endif
