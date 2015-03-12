@@ -21,6 +21,7 @@ void	parse_cmd(char *cmd, t_all *all)
 
 	i = 0;
 	cmd_all = ft_strsplit(cmd, ';');
+	free(cmd);
 	while (cmd_all[i])
 	{	
 		cmd_all[i] = ft_leave_tab(cmd_all[i]);

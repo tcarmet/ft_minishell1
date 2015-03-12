@@ -12,6 +12,51 @@
 
 #include "ft_sh.h"
 
+char	*ft_strjoin_free(char *s1, char *s2)
+{
+	char	*n;
+	int		i;
+	int		j;
+
+	i = 0;
+	while (s1[i])
+		i++;
+	j = 0;
+	while (s2[j])
+		j++;
+	n = (char *)malloc(sizeof(char) * (i + j + 1));
+	i = 0;
+	while (s1[i])
+	{
+		n[i] = s1[i];
+		i++;	
+	}
+	free(s1);
+	j = 0;
+	while (s2[j])
+	{
+		n[i + j] = s2[j];
+		j++;	
+	}
+	n[i + j] = '\0';
+	return (n);
+}
+
+void	free_tb(char ***s)
+{
+	int	i;
+
+	i = 0;
+	while ((*s)[i])
+	{
+		free((*s)[i]);
+		(*s)[i] = NULL;
+		i++;
+	}
+	free(*s);
+	*s = NULL;
+}
+
 void	ft_env_to_array(t_all *all)
 {
 	t_env	*tmp;
@@ -25,7 +70,7 @@ void	ft_env_to_array(t_all *all)
 		count++;
 		tmp = tmp->next;
 	}
-	all->array = (char **)malloc(sizeof(char *) * (count));
+	all->array = (char **)malloc(sizeof(char *) * (count + 1));
 	count = 0;
 	tmp = all->env;
 	while (tmp)
@@ -34,7 +79,7 @@ void	ft_env_to_array(t_all *all)
 		len = ft_strlen(tmp->var);
 		len += ft_strlen(tmp->value);
 		all->array[count] = ft_strjoin(tmp->var, "=");
-		all->array[count] = ft_strjoin(all->array[count], tmp->value);
+		all->array[count] = ft_strjoin_free(all->array[count], tmp->value);
 		count++;
 		tmp = tmp->next;
 	}
@@ -56,12 +101,16 @@ int		ft_is_binary(char *str, t_all *all)
 	while (split[i])
 	{
 		all->path = ft_strjoin(split[i], "/");
-		all->path = ft_strjoin(all->path, str);
+		all->path = ft_strjoin_free(all->path, str);
 		if (lstat(all->path, &stat) >= 0)
+		{
+			free_tb(&split);
+			tmp = NULL;
 			return (1);
+		}
 		i++;
 	}
-	free(split);
+	free_tb(&split);
 	tmp = NULL;
 	return (0);
 }
@@ -78,9 +127,10 @@ void	ft_exec_binary(char **str, t_all *all)
 	{
 		if (execve(all->path, str, all->array) < 0)
 			ft_sh_error(EXEC_ERROR, "\0");
-		free(all->path);
-		free(all->array);
 	}
 	else
-		wait(NULL);
+	{
+		wait(&pid);
+		free_tb(&all->array);
+	}
 }
