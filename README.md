@@ -3,7 +3,7 @@ Work in progress
 
 # TO DO LIST
 
-
+- modif "_" de l'env à chaque exec_binary
 - env, argument a gerer
 - exit -> done ( a checker ) 
 - setenv -> done
