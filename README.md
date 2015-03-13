@@ -3,14 +3,14 @@ Work in progress
 
 # TO DO LIST
 
-- modif "_" de l'env à chaque exec_binary
+- modif "_" de l'env à chaque exec_binary -> pas obliger...
 - env, argument a gerer
-- exit -> done ( a checker ) 
+- exit -> done ( sounds good ) 
 - setenv -> done
 - unsetenv -> done
-- cd + option -> -1, -s
-- signal (bonus) ctrl c, ctrl d
+- cd + option -> -l -p -v -n -
+- signal (bonus) ctrl c, ctrl d -> sounds good
 - init env, si env == null
-- leaks
+- leaks -> lol leaking as fuck... 
 - split les tab -> done
-
+- bonus, afficher le path dans le prompt && user (pour tanguy)
