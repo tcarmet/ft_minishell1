@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/09 16:49:09 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/03/09 16:49:10 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/03/13 21:01:59 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_sh_init(t_all *all)
 
 int		ft_sh_check_env(char **env, t_all *all)
 {
-	char 	**str;
+	char	**str;
 	char	*tmp;
 
 	tmp = NULL;

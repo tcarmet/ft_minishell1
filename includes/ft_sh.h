@@ -6,7 +6,7 @@
 /*   By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 18:03:27 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/02/17 00:45:49 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/03/13 21:13:45 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,24 @@
 # include <sys/wait.h>
 # include <signal.h>
 
-
 typedef struct	s_env
 {
-	char *var;
-	char *value;
-	struct s_env *next;
+	char			*var;
+	char			*value;
+	struct s_env	*next;
 
 }				t_env;
 
 typedef struct	s_all
 {
 	t_env		*env;
-	char 		*path;
+	char		*path;
 	char		**array;
-	pid_t 		pid;
+	pid_t		pid;
 	int			prompt;
 }				t_all;
 
-typedef enum 	e_error
+typedef enum	e_error
 {
 	SYSCALL = 1,
 	SYSPID,
@@ -102,4 +101,4 @@ int				ft_check_binary(char **split, struct stat stat, \
 **	ft_sh_cd.c
 */
 void			ft_sh_cd(char **str, t_all *all);
-#endif 
+#endif

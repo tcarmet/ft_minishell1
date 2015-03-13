@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/10 16:39:01 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/03/10 16:39:02 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/03/13 21:01:29 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_sh_cd(char **str, t_all *all)
 {
-	char 	*pwd;
+	char	*pwd;
 	t_env	*tmp;
 
 	tmp = all->env;

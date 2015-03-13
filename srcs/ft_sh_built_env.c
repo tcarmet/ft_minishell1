@@ -6,7 +6,7 @@
 /*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/09 21:31:59 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/09 21:32:02 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/03/13 21:00:40 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		ft_setenv_check(char **str, t_all *all)
 void	ft_sh_setenv(char **str, t_all *all)
 {
 	t_env	*tmp;
-	size_t len;
+	size_t	len;
 
 	len = ft_strlen_tab(str);
 	if (len == 1)
@@ -71,6 +71,7 @@ void	ft_sh_setenv(char **str, t_all *all)
 void	ft_sh_list_search(t_env *prev, char **str, int i)
 {
 	t_env	*tmp;
+
 	tmp = prev->next;
 	while (tmp != NULL)
 	{

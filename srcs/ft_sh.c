@@ -6,7 +6,7 @@
 /*   By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 17:24:53 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/09 16:42:42 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/03/13 20:57:37 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 
 void	parse_cmd(char *cmd, t_all *all)
 {
-	char **cmd_array;
-	char **cmd_all;
-	int i;
+	char	**cmd_array;
+	char	**cmd_all;
+	int		i;
 
 	i = 0;
 	cmd_all = ft_strsplit(cmd, ';');
 	free(cmd);
 	while (cmd_all[i])
-	{	
+	{
 		cmd_all[i] = ft_leave_tab(cmd_all[i]);
 		cmd_array = ft_strsplit(cmd_all[i], ' ');
 		if (cmd_array[0])

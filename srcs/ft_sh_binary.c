@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/10 14:54:50 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/03/12 15:24:42 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/03/13 21:11:13 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	ft_env_to_array(t_all *all)
 
 int		ft_check_binary(char **split, struct stat stat, t_all *all, char *str)
 {
-	int i;
+	int	i;
 
-	i = 0;	
+	i = 0;
 	while (split[i])
 	{
 		all->path = ft_strjoin(split[i], "/");
@@ -64,14 +64,14 @@ int		ft_check_binary(char **split, struct stat stat, t_all *all, char *str)
 
 int		ft_is_binary(char *str, t_all *all)
 {
-	char **split;
-	t_env	*tmp;
-	struct stat	stat;
+	char			**split;
+	t_env			*tmp;
+	struct stat		s;
 
 	tmp = all->env;
 	while (tmp->next && ft_strequ("PATH", tmp->var) != 1)
 		tmp = tmp->next;
-	if ((str[0] == '.' || str[0] == '/') && lstat(str, &stat) >= 0)
+	if ((str[0] == '.' || str[0] == '/') && lstat(str, &s) >= 0)
 	{
 		all->path = ft_strdup(str);
 		tmp = NULL;
@@ -80,15 +80,15 @@ int		ft_is_binary(char *str, t_all *all)
 	else if (str[0] == '.' || str[0] == '/')
 		return (0);
 	split = ft_strsplit(tmp->value, ':');
-	if (ft_check_binary(split, stat, all, str))
+	if (ft_check_binary(split, s, all, str))
 		return (1);
 	free_tb(&split);
 	tmp = NULL;
 	return (0);
-}	
+}
 
 void	ft_exec_binary(char **str, t_all *all)
-{	
+{
 	ft_env_to_array(all);
 	all->pid = fork();
 	if (all->pid < 0)
