@@ -17,5 +17,6 @@ void	ft_sh_init(t_all *all)
 	all->env = NULL;
 	all->path = NULL;
 	all->array = NULL;
+	all->pid = 0;
 }
 

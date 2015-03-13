@@ -37,7 +37,34 @@ void	ft_exec_builtin(char **str, t_all *all)
 	else if (ft_strequ("unsetenv", str[0]))
 		ft_sh_unsetenv(str, all);
 	else if (ft_strequ("exit", str[0]))
-		exit(0);
+		ft_sh_exit(str);
 	// else if (ft_strequ("cd", str))
 	// 	ft_sh_cd();
+}
+
+void	ft_sh_exit(char **str)
+{
+	int		i;
+	int		num;
+
+	i = 0;
+	if (!str[1])
+	{
+		ft_putendl_fd("exit", 2);
+		exit(0);
+	}
+	else if (str[1])
+	{
+		while (str[1][i] && ft_isdigit(str[1][i]))
+		{
+			if (str[1][i + 1] == '\0')
+			{
+				num = ft_atoi(str[1]);
+				ft_putendl_fd("exit", 2);
+				exit(num);
+			}
+			i++;
+		}
+		ft_putendl_fd("exit: Expression Syntax.", 2);
+	}
 }

@@ -21,7 +21,7 @@ void	parse_cmd(char *cmd, t_all *all)
 
 	i = 0;
 	cmd_all = ft_strsplit(cmd, ';');
-	// free(cmd);
+	free(cmd);
 	while (cmd_all[i])
 	{	
 		cmd_all[i] = ft_leave_tab(cmd_all[i]);
@@ -52,13 +52,17 @@ int		main(int argc, char **argv, char **env)
 	line = NULL;
 	ft_sh_init(&all);
 	ft_stock_env(env, &all);
-	while (42)
+	while (all.pid >= 0)
 	{
+		signal(SIGINT, SIG_IGN);
 		ft_putstr("$> : ");
-		get_next_line(0, &line);
-		parse_cmd(line, &all);
-		free(line);
+		if (get_next_line(0, &line) > 0)
+			parse_cmd(line, &all);
+		else
+		{
+			free(line);
+			all.pid = -1;
+		}
 	}
 	return (0);
 }
-

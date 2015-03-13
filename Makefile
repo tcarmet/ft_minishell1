@@ -6,13 +6,13 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/03/11 20:15:45 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/03/13 15:08:11 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME 		= ft_minishell1
 
-DEBUG 		= no
+DEBUG 		= yes
 ifeq ($(DEBUG),no)
     FLAGS	=-Wall -Werror -Wextra
 else

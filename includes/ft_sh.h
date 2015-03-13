@@ -30,6 +30,7 @@ typedef struct	s_all
 	t_env		*env;
 	char 		*path;
 	char		**array;
+	pid_t 		pid;
 }				t_all;
 
 
@@ -59,6 +60,7 @@ void			ft_stock_env(char **env, t_all *all);
 char			*ft_strlower(char *str);
 void			ft_sh_error(int i, char *str);
 char			*ft_leave_tab(char *cmd);
+size_t			ft_strlen_tab(char **tab);
 /*
 ** ft_sh_parse.c
 */
@@ -79,6 +81,7 @@ void			parse_cmd(char *cmd, t_all *all);
 */
 int				ft_is_builtin(char *str);
 void			ft_exec_builtin(char **str, t_all *all);
+void			ft_sh_exit(char **str);
 /*
 **	ft_sh_binary.c
 */

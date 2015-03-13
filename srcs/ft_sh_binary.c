@@ -67,6 +67,14 @@ int		ft_is_binary(char *str, t_all *all)
 	tmp = all->env;
 	while (tmp->next && ft_strequ("PATH", tmp->var) != 1)
 		tmp = tmp->next;
+	if ((str[0] == '.' || str[0] == '/') && lstat(str, &stat) >= 0)
+	{
+		all->path = ft_strdup(str);
+		tmp = NULL;
+		return (1);
+	}
+	else if (str[0] == '.' || str[0] == '/')
+		return (0);
 	split = ft_strsplit(tmp->value, ':');
 	while (split[i])
 	{
@@ -78,6 +86,8 @@ int		ft_is_binary(char *str, t_all *all)
 			tmp = NULL;
 			return (1);
 		}
+		if (all->path)
+			free(all->path);
 		i++;
 	}
 	free_tb(&split);
@@ -87,18 +97,16 @@ int		ft_is_binary(char *str, t_all *all)
 
 void	ft_exec_binary(char **str, t_all *all)
 {	
-	pid_t pid;
-
 	ft_env_to_array(all);
-	pid = fork();
-	if (pid < 0)
+	all->pid = fork();
+	if (all->pid < 0)
 		ft_sh_error(SYSPID, "\0");
-	if (pid == 0)
+	if (all->pid == 0)
 	{
 		if (execve(all->path, str, all->array) < 0)
 			ft_sh_error(EXEC_ERROR, "\0");
 	}
 	else
-		wait(&pid);
+		wait(&all->pid);
 
 }
