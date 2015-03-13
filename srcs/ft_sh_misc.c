@@ -43,6 +43,12 @@ void	ft_sh_error(int i, char *str)
 		ft_putendl_fd("setenv: Too many arguments.", 2);
 	else if (i == UNSET_ARG)
 		ft_putendl_fd("unsetenv: Too few arguments.", 2);
+	else if (i == ENV_ERROR)
+	{
+		ft_putstr_fd("env: ", 2);
+		ft_putstr_fd(str, 2);
+		ft_putendl_fd(": No such file or directory", 2);
+	}
 }
 
 char	*ft_leave_tab(char *cmd)
@@ -67,4 +73,19 @@ size_t	ft_strlen_tab(char **tab)
 	while (tab[i])
 		i++;
 	return (i);
+}
+
+void	free_tb(char ***s)
+{
+	int	i;
+
+	i = 0;
+	while ((*s)[i])
+	{
+		free((*s)[i]);
+		(*s)[i] = NULL;
+		i++;
+	}
+	free(*s);
+	*s = NULL;
 }

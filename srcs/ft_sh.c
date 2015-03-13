@@ -42,6 +42,19 @@ void	parse_cmd(char *cmd, t_all *all)
 	free(cmd_all);
 }
 
+int		ft_put_prompt(void)
+{
+	ft_putstr("$> : ");
+	return (1);
+}
+
+void	ft_control(int i)
+{
+	i = i;
+	ft_putchar('\n');
+	ft_put_prompt();
+}
+
 int		main(int argc, char **argv, char **env)
 {
 	t_all	all;
@@ -51,11 +64,11 @@ int		main(int argc, char **argv, char **env)
 	(void)argc;
 	line = NULL;
 	ft_sh_init(&all);
-	ft_stock_env(env, &all);
-	while (all.pid >= 0)
+	if (ft_sh_check_env(env, &all))
+		ft_stock_env(env, &all);
+	while (all.pid >= 0 && ft_put_prompt())
 	{
-		signal(SIGINT, SIG_IGN);
-		ft_putstr("$> : ");
+		signal(SIGINT, ft_control);
 		if (get_next_line(0, &line) > 0)
 			parse_cmd(line, &all);
 		else

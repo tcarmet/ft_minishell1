@@ -31,7 +31,7 @@ int		ft_is_builtin(char *str)
 void	ft_exec_builtin(char **str, t_all *all)
 {
 	if (ft_strequ("env", str[0]))
-		ft_print_env(all);
+		ft_sh_env(str, all);
 	else if (ft_strequ("setenv", str[0]))
 		ft_sh_setenv(str, all);
 	else if (ft_strequ("unsetenv", str[0]))

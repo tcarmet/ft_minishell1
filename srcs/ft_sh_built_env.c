@@ -68,9 +68,24 @@ void	ft_sh_setenv(char **str, t_all *all)
 	}
 }
 
-int		ft_sh_unsetenv(char **str, t_all *all)
+void	ft_sh_list_search(t_env *prev, char **str, int i)
 {
 	t_env	*tmp;
+	tmp = prev->next;
+	while (tmp != NULL)
+	{
+		if (ft_strequ(tmp->var, str[i]))
+		{
+			prev->next = tmp->next;
+			free(tmp);
+		}
+		prev = tmp;
+		tmp = tmp->next;
+	}
+}
+
+int		ft_sh_unsetenv(char **str, t_all *all)
+{
 	t_env	*prev;
 	int		i;
 
@@ -85,17 +100,7 @@ int		ft_sh_unsetenv(char **str, t_all *all)
 			all->env = prev->next;
 			free(prev);
 		}
-		tmp = prev->next;
-		while (tmp != NULL)
-		{
-			if (ft_strequ(tmp->var, str[i]))
-			{
-				prev->next = tmp->next;
-				free(tmp);
-			}
-			prev = tmp;
-			tmp = tmp->next;
-		}
+		ft_sh_list_search(prev, str, i);
 		prev = NULL;
 		i++;
 	}

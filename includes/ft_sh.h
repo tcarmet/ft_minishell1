@@ -17,6 +17,7 @@
 # include <sys/wait.h>
 # include <signal.h>
 
+
 typedef struct	s_env
 {
 	char *var;
@@ -31,8 +32,8 @@ typedef struct	s_all
 	char 		*path;
 	char		**array;
 	pid_t 		pid;
+	int			prompt;
 }				t_all;
-
 
 typedef enum 	e_error
 {
@@ -41,12 +42,14 @@ typedef enum 	e_error
 	EXEC_ERROR,
 	ARG_ENV,
 	UNSET_ARG,
+	ENV_ERROR,
 }				t_error;
 
 /*
 **	ft_sh_init.c
 */
 void			ft_sh_init(t_all *all);
+int				ft_sh_check_env(char **env, t_all *all);
 /*
 **	ft_sh_env.c
 */
@@ -54,6 +57,7 @@ t_env			*env_init(void);
 t_env			*env_fill(char *var, char *value);
 void			ft_sh_push(t_all *all, t_env *env);
 void			ft_stock_env(char **env, t_all *all);
+void			ft_sh_env(char **str, t_all *all);
 /*
 ** ft_sh_misc.c
 */
@@ -61,6 +65,7 @@ char			*ft_strlower(char *str);
 void			ft_sh_error(int i, char *str);
 char			*ft_leave_tab(char *cmd);
 size_t			ft_strlen_tab(char **tab);
+void			free_tb(char ***s);
 /*
 ** ft_sh_parse.c
 */
@@ -72,9 +77,12 @@ void			ft_print_env(t_all	*all);
 void			ft_sh_setenv(char **str, t_all *all);
 int				ft_setenv_check(char **str, t_all *all);
 int				ft_sh_unsetenv(char **str, t_all *all);
+void			ft_sh_list_search(t_env *prev, char **str, int i);
 /*
 **	ft_sh.c
 */
+int				ft_put_prompt(void);
+void			ft_control(int i);
 void			parse_cmd(char *cmd, t_all *all);
 /*
 **	ft_sh_builtin.c
@@ -88,6 +96,8 @@ void			ft_sh_exit(char **str);
 int				ft_is_binary(char *str, t_all *all);
 void			ft_exec_binary(char **str, t_all *all);
 void			ft_env_to_array(t_all *all);
+int				ft_check_binary(char **split, struct stat stat, \
+				t_all *all, char *str);
 /*
 **	ft_sh_cd.c
 */

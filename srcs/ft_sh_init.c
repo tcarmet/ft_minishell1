@@ -20,3 +20,25 @@ void	ft_sh_init(t_all *all)
 	all->pid = 0;
 }
 
+int		ft_sh_check_env(char **env, t_all *all)
+{
+	char 	**str;
+	char	*tmp;
+
+	tmp = NULL;
+	if (env[0])
+		return (1);
+	str = (char **)malloc(sizeof(char *) * 3);
+	str[0] = ft_strdup("setenv");
+	str[1] = ft_strdup("PWD");
+	str[2] = getcwd(tmp, 1024);
+	ft_sh_setenv(str, all);
+	free(str);
+	str = (char **)malloc(sizeof(char *) * 3);
+	str[0] = ft_strdup("setenv");
+	str[1] = ft_strdup("SHLVL");
+	str[2] = ft_strdup("1");
+	ft_sh_setenv(str, all);
+	free(str);
+	return (0);
+}

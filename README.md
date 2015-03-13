@@ -14,3 +14,4 @@ Work in progress
 - leaks -> lol leaking as fuck... 
 - split les tab -> done
 - bonus, afficher le path dans le prompt && user (pour tanguy)
+- a gerer, si un binaire segfault

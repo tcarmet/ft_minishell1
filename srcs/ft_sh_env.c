@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/09 17:56:18 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/03/09 17:56:19 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/03/13 18:54:22 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,3 +67,29 @@ void	ft_stock_env(char **envp, t_all *all)
 	}
 }
 
+void	ft_sh_env(char **str, t_all *all)
+{
+	if (!str[1])
+		ft_print_env(all);
+	else if (ft_strequ("-i", str[1]) && str[2])
+	{
+		if (ft_is_binary(str[2], all))
+		{
+			all->pid = fork();
+			if (all->pid < 0)
+				ft_sh_error(SYSPID, "\0");
+			if (all->pid == 0)
+			{
+				if (execve(all->path, (str + 2), NULL) < 0)
+				{
+					ft_sh_error(EXEC_ERROR, "\0");
+					exit(-1);
+				}
+			}
+			else
+				wait (&all->pid);
+		}
+		else
+			ft_sh_error(ENV_ERROR, str[2]);
+	}
+}
