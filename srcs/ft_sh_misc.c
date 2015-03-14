@@ -36,7 +36,7 @@ void	ft_sh_error(int i, char *str)
 		ft_putendl_fd(str, 2);
 	}
 	else if (i == SYSPID)
-		ft_putendl_fd("plop", 2);
+		ft_putendl_fd("ft_minishell1: fork failed: resource unavailable", 2);
 	else if (i == ARG_ENV)
 		ft_putendl_fd("setenv: Too many arguments.", 2);
 	else if (i == UNSET_ARG)
