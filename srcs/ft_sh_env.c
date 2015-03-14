@@ -61,7 +61,7 @@ void	ft_stock_env(char **envp, t_all *all)
 		env = NULL;
 		env_tab = ft_parse_env(envp[i]);
 		env = env_fill(env_tab[0], env_tab[1]);
-		free(env_tab);
+		free_tb(&env_tab);
 		ft_sh_push(all, env);
 		i++;
 	}

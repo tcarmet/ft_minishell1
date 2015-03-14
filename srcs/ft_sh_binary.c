@@ -20,7 +20,7 @@ void	ft_env_to_array(t_all *all)
 
 	count = 0;
 	tmp = all->env;
-	while (tmp->next)
+	while (tmp)
 	{
 		count++;
 		tmp = tmp->next;
@@ -46,11 +46,12 @@ int		ft_check_binary(char **split, struct stat stat, t_all *all, char *str)
 	int	i;
 
 	i = 0;
+	(void)stat;
 	while (split[i])
 	{
 		all->path = ft_strjoin(split[i], "/");
 		all->path = ft_strjoin_free(all->path, str);
-		if (lstat(all->path, &stat) >= 0)
+		if (access(all->path, X_OK) == 0)
 		{
 			free_tb(&split);
 			return (1);
@@ -69,7 +70,7 @@ int		ft_is_binary(char *str, t_all *all)
 	struct stat		s;
 
 	tmp = all->env;
-	while (tmp->next && ft_strequ("PATH", tmp->var) != 1)
+	while (tmp && tmp->next && ft_strequ("PATH", tmp->var) != 1)
 		tmp = tmp->next;
 	if ((str[0] == '.' || str[0] == '/') && lstat(str, &s) >= 0)
 	{
@@ -78,6 +79,8 @@ int		ft_is_binary(char *str, t_all *all)
 		return (1);
 	}
 	else if (str[0] == '.' || str[0] == '/')
+		return (0);
+	if (!tmp)
 		return (0);
 	split = ft_strsplit(tmp->value, ':');
 	if (ft_check_binary(split, s, all, str))
@@ -89,7 +92,8 @@ int		ft_is_binary(char *str, t_all *all)
 
 void	ft_exec_binary(char **str, t_all *all)
 {
-	ft_env_to_array(all);
+	if (all->env)
+		ft_env_to_array(all);
 	all->pid = fork();
 	if (all->pid < 0)
 		ft_sh_error(SYSPID, "\0");
@@ -103,4 +107,6 @@ void	ft_exec_binary(char **str, t_all *all)
 	}
 	else
 		wait(&all->pid);
+	free_tb(&all->array);
+	free(all->path);
 }

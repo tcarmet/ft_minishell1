@@ -38,5 +38,6 @@ char		*ft_strjoin(char const *s1, char const *s2)
 			final[counter] = s2[counter - len];
 		counter++;
 	}
+	final[counter] = '\0';
 	return (final);
 }

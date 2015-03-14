@@ -78,6 +78,8 @@ void	ft_sh_list_search(t_env *prev, char **str, int i)
 		if (ft_strequ(tmp->var, str[i]))
 		{
 			prev->next = tmp->next;
+			free(tmp->var);
+			free(tmp->value);
 			free(tmp);
 		}
 		prev = tmp;
@@ -99,6 +101,8 @@ int		ft_sh_unsetenv(char **str, t_all *all)
 		if (ft_strequ(prev->var, str[i]))
 		{
 			all->env = prev->next;
+			free(prev->var);
+			free(prev->value);
 			free(prev);
 		}
 		ft_sh_list_search(prev, str, i);

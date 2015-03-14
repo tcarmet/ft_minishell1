@@ -35,11 +35,11 @@ void	parse_cmd(char *cmd, t_all *all)
 				ft_exec_binary(cmd_array, all);
 			else
 				ft_sh_error(SYSCALL, cmd_array[0]);
-			free(cmd_array);
+			free_tb(&cmd_array);
 		}
 		i++;
 	}
-	free(cmd_all);
+	free_tb(&cmd_all);
 }
 
 int		ft_put_prompt(void)
