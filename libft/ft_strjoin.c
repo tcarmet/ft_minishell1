@@ -6,7 +6,7 @@
 /*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/14 15:34:17 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/14 15:35:13 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/03/14 15:40:28 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,9 @@ char			*ft_strjoin(char const *s1, char const *s2)
 			return (new);
 		}
 	}
+	else if (s1)
+		return (ft_strdup(s1));
+	else if (s2)
+		return (ft_strdup(s2));
 	return (NULL);
 }
