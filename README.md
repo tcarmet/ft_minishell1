@@ -11,7 +11,7 @@ Work in progress
 - cd + option -> -l -p -v -n -
 - signal (bonus) ctrl c, ctrl d -> sounds good
 - init env, si env == null -> done
-- leaks -> lol leaking as fuck... 
+- leaks -> done
 - split les tab -> done
 - bonus, afficher le path dans le prompt && user (pour tanguy)
 - a gerer, si un binaire segfault
