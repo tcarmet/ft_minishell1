@@ -1,6 +1,8 @@
 # ft_sh
 Work in progress
 
+
+This project was made with [tcoppin](http://github.com/tcoppin)
 # TO DO LIST
 
 - modif "_" de l'env à chaque exec_binary -> pas obliger...
@@ -15,3 +17,4 @@ Work in progress
 - split les tab -> done
 - bonus, afficher le path dans le prompt && user (pour tanguy)
 - a gerer, si un binaire segfault
+
