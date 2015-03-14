@@ -95,6 +95,8 @@ int		ft_sh_unsetenv(char **str, t_all *all)
 	i = 1;
 	if (!str[i])
 		ft_sh_error(UNSET_ARG, "\0");
+	if (!all->env)
+		return (0);
 	while (str[i])
 	{
 		prev = all->env;
