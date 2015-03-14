@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_sh.h"
 
 void	parse_cmd(char *cmd, t_all *all)
@@ -25,10 +24,9 @@ void	parse_cmd(char *cmd, t_all *all)
 	while (cmd_all[i])
 	{
 		cmd_all[i] = ft_leave_tab(cmd_all[i]);
-		cmd_array = ft_strsplit(cmd_all[i], ' ');
+		cmd_array = ft_tild_split(ft_strsplit(cmd_all[i], ' '), all->home);
 		if (cmd_array[0])
 		{
-			cmd_array[0] = ft_strlower(cmd_array[0]);
 			if (ft_is_builtin(cmd_array[0]))
 				ft_exec_builtin(cmd_array, all);
 			else if (ft_is_binary(cmd_array[0], all))
@@ -48,11 +46,27 @@ int		ft_put_prompt(void)
 	return (1);
 }
 
+pid_t		save_pid(pid_t pid)
+{
+	static pid_t	spid = 0;
+
+	if (pid)
+		spid = pid;
+	return (spid);
+}
+
 void	ft_control(int i)
 {
 	i = i;
-	ft_putchar('\n');
-	ft_put_prompt();
+	if (save_pid(0) <= 0)
+	{
+		ft_putchar(8);
+		ft_putchar(8);
+		ft_putchar(32);
+		ft_putchar(32);
+		ft_putchar(8);
+		ft_putchar(8);
+	}
 }
 
 int		main(int argc, char **argv, char **env)
@@ -60,8 +74,8 @@ int		main(int argc, char **argv, char **env)
 	t_all	all;
 	char	*line;
 
-	(void)argv;
 	(void)argc;
+	(void)argv;
 	line = NULL;
 	ft_sh_init(&all);
 	if (ft_sh_check_env(env, &all))
@@ -69,11 +83,15 @@ int		main(int argc, char **argv, char **env)
 	while (all.pid >= 0 && ft_put_prompt())
 	{
 		signal(SIGINT, ft_control);
+		signal(SIGTSTP, ft_control);
+		signal(SIGSTOP, ft_control);
 		if (get_next_line(0, &line) > 0)
 			parse_cmd(line, &all);
 		else
 		{
-			free(line);
+			if (line)
+				free(line);
+			line = NULL;
 			all.pid = -1;
 		}
 	}

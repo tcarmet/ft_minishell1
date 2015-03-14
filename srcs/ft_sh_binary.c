@@ -90,23 +90,32 @@ int		ft_is_binary(char *str, t_all *all)
 	return (0);
 }
 
+void	ft_sh_exec_error(char *str)
+{
+	ft_putstr_fd(str, 2);
+	ft_putendl_fd(": Permission denied.", 2);
+}
+
 void	ft_exec_binary(char **str, t_all *all)
 {
 	if (all->env)
 		ft_env_to_array(all);
 	all->pid = fork();
+	save_pid(all->pid);
 	if (all->pid < 0)
 		ft_sh_error(SYSPID, "\0");
 	if (all->pid == 0)
 	{
 		if (execve(all->path, str, all->array) < 0)
 		{
-			ft_sh_error(EXEC_ERROR, "\0");
+			ft_sh_exec_error(all->path);
 			exit(-1);
 		}
 	}
 	else
 		wait(&all->pid);
+	save_pid(-1);
 	free_tb(&all->array);
 	free(all->path);
 }
+

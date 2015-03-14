@@ -34,3 +34,22 @@ char	**ft_parse_env(char *env)
 	env_tab[2] = NULL;
 	return (env_tab);
 }
+
+char	**ft_tild_split(char **split, char *home)
+{
+	int		i;
+	char	*tmp;
+
+	i = 0;
+	while (split[i])
+	{
+		if (split[i][0] == '~')
+		{
+			tmp = split[i];
+			split[i] = ft_strjoin(home, tmp + 1);
+			free(tmp);
+		}
+		i++;
+	}
+	return (split);
+}

@@ -37,8 +37,6 @@ void	ft_sh_error(int i, char *str)
 	}
 	else if (i == SYSPID)
 		ft_putendl_fd("plop", 2);
-	else if (i == EXEC_ERROR)
-		ft_putendl_fd("EXEC_ERROR", 2);
 	else if (i == ARG_ENV)
 		ft_putendl_fd("setenv: Too many arguments.", 2);
 	else if (i == UNSET_ARG)
@@ -46,6 +44,12 @@ void	ft_sh_error(int i, char *str)
 	else if (i == ENV_ERROR)
 	{
 		ft_putstr_fd("env: ", 2);
+		ft_putstr_fd(str, 2);
+		ft_putendl_fd(": No such file or directory", 2);
+	}
+	else if (i == CD_ERROR)
+	{
+		ft_putstr_fd("cd: ", 2);
 		ft_putstr_fd(str, 2);
 		ft_putendl_fd(": No such file or directory", 2);
 	}

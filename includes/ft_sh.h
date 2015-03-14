@@ -32,16 +32,17 @@ typedef struct	s_all
 	char		**array;
 	pid_t		pid;
 	int			prompt;
+	char		*home;
 }				t_all;
 
 typedef enum	e_error
 {
 	SYSCALL = 1,
 	SYSPID,
-	EXEC_ERROR,
 	ARG_ENV,
 	UNSET_ARG,
 	ENV_ERROR,
+	CD_ERROR,
 }				t_error;
 
 /*
@@ -69,6 +70,7 @@ void			free_tb(char ***s);
 ** ft_sh_parse.c
 */
 char			**ft_parse_env(char *env);
+char			**ft_tild_split(char **split, char *home);
 /*
 **	ft_sh_built_env.c
 */
@@ -82,6 +84,7 @@ void			ft_sh_list_search(t_env *prev, char **str, int i);
 */
 int				ft_put_prompt(void);
 void			ft_control(int i);
+pid_t			save_pid(pid_t pid);
 void			parse_cmd(char *cmd, t_all *all);
 /*
 **	ft_sh_builtin.c
@@ -97,8 +100,13 @@ void			ft_exec_binary(char **str, t_all *all);
 void			ft_env_to_array(t_all *all);
 int				ft_check_binary(char **split, struct stat stat, \
 				t_all *all, char *str);
+void			ft_sh_exec_error(char *str);
 /*
 **	ft_sh_cd.c
 */
 void			ft_sh_cd(char **str, t_all *all);
+void			ft_sh_mod_pwd(t_all *all, char *str, char *pwd);
+void			ft_sh_chdir(char *pwd, t_all *all, char *str);
+void			ft_sh_cd_option(t_all *all, char *pwd);
+
 #endif

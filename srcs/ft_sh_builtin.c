@@ -38,8 +38,8 @@ void	ft_exec_builtin(char **str, t_all *all)
 		ft_sh_unsetenv(str, all);
 	else if (ft_strequ("exit", str[0]))
 		ft_sh_exit(str);
-	// else if (ft_strequ("cd", str))
-	// 	ft_sh_cd();
+	else if (ft_strequ("cd", str[0]))
+		ft_sh_cd(str, all);
 }
 
 void	ft_sh_exit(char **str)
@@ -55,7 +55,7 @@ void	ft_sh_exit(char **str)
 	}
 	else if (str[1])
 	{
-		while (str[1][i] && ft_isdigit(str[1][i]))
+		while (!str[2] && str[1][i] && ft_isdigit(str[1][i]))
 		{
 			if (str[1][i + 1] == '\0')
 			{

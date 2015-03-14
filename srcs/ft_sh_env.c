@@ -61,6 +61,8 @@ void	ft_stock_env(char **envp, t_all *all)
 		env = NULL;
 		env_tab = ft_parse_env(envp[i]);
 		env = env_fill(env_tab[0], env_tab[1]);
+		if (ft_strequ("HOME", env_tab[0]))
+			all->home = ft_strdup(env_tab[1]);
 		free_tb(&env_tab);
 		ft_sh_push(all, env);
 		i++;
@@ -82,7 +84,7 @@ void	ft_sh_env(char **str, t_all *all)
 			{
 				if (execve(all->path, (str + 2), NULL) < 0)
 				{
-					ft_sh_error(EXEC_ERROR, "\0");
+					ft_sh_exec_error(all->path);
 					exit(-1);
 				}
 			}
