@@ -6,7 +6,7 @@
 /*   By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 17:24:53 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/13 20:57:37 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/03/14 23:00:22 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		ft_put_prompt(void)
 	return (1);
 }
 
-pid_t		save_pid(pid_t pid)
+pid_t	save_pid(pid_t pid)
 {
 	static pid_t	spid = 0;
 

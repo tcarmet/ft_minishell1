@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/10 14:54:50 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/03/13 21:11:13 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/03/14 23:01:21 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,4 +118,3 @@ void	ft_exec_binary(char **str, t_all *all)
 	free_tb(&all->array);
 	free(all->path);
 }
-

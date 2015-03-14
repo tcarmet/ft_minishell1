@@ -6,13 +6,11 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/10 16:39:01 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/03/13 21:01:29 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/03/14 23:00:37 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh.h"
-
-
 
 void	ft_sh_mod_pwd(t_all *all, char *str, char *pwd)
 {
