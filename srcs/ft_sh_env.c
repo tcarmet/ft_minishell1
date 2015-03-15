@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/09 17:56:18 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/03/13 18:54:22 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/03/15 17:47:53 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ft_sh_env(char **str, t_all *all)
 	if (!str[1])
 		return (ft_print_env(all));
 	if (!(ft_strequ("-i", str[1]) && str[2]))
-	 	return ;
+		return ;
 	if (ft_is_binary(str[2], all))
 	{
 		all->pid = fork();

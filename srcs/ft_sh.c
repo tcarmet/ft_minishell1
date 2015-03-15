@@ -47,7 +47,7 @@ int		ft_put_prompt(void)
 
 	tmp = NULL;
 	pwd = getcwd(tmp, 1024);
-	ft_putstr("➜  ");
+	ft_putstr("$> ");
 	if (ft_strequ(pwd, "/"))
 		ft_putstr("/");
 	else
