@@ -5,22 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/15 21:23:57 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/10 17:48:39 by tcoppin          ###   ########.fr       */
+/*   Created: 2015/03/15 17:42:14 by tcarmet           #+#    #+#             */
+/*   Updated: 2015/03/15 17:42:15 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 10
 
-# include <sys/types.h>
 # include <stdlib.h>
-# include <sys/stat.h>
+# include <sys/types.h>
+# include <sys/uio.h>
 # include <unistd.h>
 # include "libft.h"
-# include <sys/uio.h>
+# define BUFF_SIZE 1
 
-int				get_next_line(int const fd, char **line);
+int	get_next_line(int const fd, char **line);
 
 #endif
