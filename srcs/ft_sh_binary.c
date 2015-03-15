@@ -98,6 +98,8 @@ void	ft_sh_exec_error(char *str)
 
 void	ft_exec_binary(char **str, t_all *all)
 {
+	int		status;
+
 	if (all->env)
 		ft_env_to_array(all);
 	all->pid = fork();
@@ -113,7 +115,8 @@ void	ft_exec_binary(char **str, t_all *all)
 		}
 	}
 	else
-		wait(&all->pid);
+		waitpid(all->pid, &status, WUNTRACED);
+	ft_term_error(WTERMSIG(status));
 	save_pid(-1);
 	free_tb(&all->array);
 	free(all->path);
