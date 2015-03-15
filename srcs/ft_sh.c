@@ -53,6 +53,7 @@ int		ft_put_prompt(void)
 	else
 		ft_putstr(ft_strrchr(pwd, '/') + 1);
 	ft_putstr(" : ");
+	free(pwd);
 	return (1);
 }
 
