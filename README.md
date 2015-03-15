@@ -10,7 +10,7 @@ This project was made with [tcoppin](http://github.com/tcoppin)
 - exit -> done ( sounds good ) 
 - setenv -> done
 - unsetenv -> done
-- cd + option -> -l -p -v -n -
+- cd + option -> -l -p -v -n -  -> done
 - signal (bonus) ctrl c, ctrl d -> sounds good
 - init env, si env == null -> done
 - leaks -> done
@@ -18,4 +18,4 @@ This project was made with [tcoppin](http://github.com/tcoppin)
 - bonus, afficher le path dans le prompt && user (pour tanguy)
 - a gerer, si un binaire segfault
 - SHLVL 
-- ~
+- ~ -> done
