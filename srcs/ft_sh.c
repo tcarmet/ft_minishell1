@@ -42,7 +42,16 @@ void	parse_cmd(char *cmd, t_all *all)
 
 int		ft_put_prompt(void)
 {
-	ft_putstr("$> : ");
+	char	*pwd;
+	char	*tmp;
+
+	tmp = NULL;
+	pwd = getcwd(tmp, 1024);
+	if (ft_strequ(pwd, "/"))
+		ft_putstr("~");
+	else
+		ft_putstr(ft_strrchr(pwd, '/') + 1);
+	ft_putstr(" $ ");
 	return (1);
 }
 
