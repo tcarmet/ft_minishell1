@@ -47,11 +47,12 @@ int		ft_put_prompt(void)
 
 	tmp = NULL;
 	pwd = getcwd(tmp, 1024);
+	ft_putstr("➜  ");
 	if (ft_strequ(pwd, "/"))
-		ft_putstr("~");
+		ft_putstr("/");
 	else
 		ft_putstr(ft_strrchr(pwd, '/') + 1);
-	ft_putstr(" $ ");
+	ft_putstr(" : ");
 	return (1);
 }
 
