@@ -71,27 +71,29 @@ void	ft_stock_env(char **envp, t_all *all)
 
 void	ft_sh_env(char **str, t_all *all)
 {
+	int status;
+
 	if (!str[1])
-		ft_print_env(all);
-	else if (ft_strequ("-i", str[1]) && str[2])
+		return (ft_print_env(all));
+	if (!(ft_strequ("-i", str[1]) && str[2]))
+	 	return ;
+	if (ft_is_binary(str[2], all))
 	{
-		if (ft_is_binary(str[2], all))
+		all->pid = fork();
+		if (all->pid < 0)
+			ft_sh_error(SYSPID, "\0");
+		if (all->pid == 0)
 		{
-			all->pid = fork();
-			if (all->pid < 0)
-				ft_sh_error(SYSPID, "\0");
-			if (all->pid == 0)
+			if (execve(all->path, (str + 2), NULL) < 0)
 			{
-				if (execve(all->path, (str + 2), NULL) < 0)
-				{
-					ft_sh_exec_error(all->path);
-					exit(-1);
-				}
+				ft_sh_exec_error(all->path);
+				exit(1);
 			}
-			else
-				wait (&all->pid);
 		}
 		else
-			ft_sh_error(ENV_ERROR, str[2]);
+			waitpid(all->pid, &status, WUNTRACED);
+		ft_term_error(WTERMSIG(status));
 	}
+	else
+		ft_sh_error(ENV_ERROR, str[2]);
 }

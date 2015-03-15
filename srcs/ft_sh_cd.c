@@ -16,6 +16,11 @@ void	ft_sh_mod_pwd(t_all *all, char *str, char *pwd)
 {
 	t_env	*env;
 
+	if (!all->env)
+	{
+		all->env = env_init();
+		all->env->var = ft_strdup(str);
+	}
 	env = all->env;
 	while (env->next && !ft_strequ(str, env->var))
 		env = env->next;
@@ -79,5 +84,8 @@ void	ft_sh_cd_option(t_all *all, char *pwd)
 	env = all->env;
 	while (env && !ft_strequ(env->var, "OLDPWD"))
 		env = env->next;
-	ft_sh_chdir(pwd, all, env->value);
+	if (env && ft_strequ(env->var, "OLDPWD"))
+		ft_sh_chdir(pwd, all, env->value);
+	else
+		ft_putendl_fd("No such file or directory.", 2);
 }
