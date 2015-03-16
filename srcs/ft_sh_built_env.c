@@ -19,9 +19,15 @@ void	ft_print_env(t_all *all)
 	tmp = all->env;
 	while (tmp != NULL)
 	{
-		ft_putstr(tmp->var);
-		ft_putchar('=');
-		ft_putendl(tmp->value);
+		if (tmp->var)
+		{
+			ft_putstr(tmp->var);
+			ft_putchar('=');
+			if (tmp->value)
+				ft_putendl(tmp->value);
+			else
+				ft_putstr("\n");
+		}
 		tmp = tmp->next;
 	}
 }
