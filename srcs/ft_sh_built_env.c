@@ -42,7 +42,10 @@ int		ft_setenv_check(char **str, t_all *all)
 		if (ft_strequ(tmp->var, str[1]))
 		{
 			free(tmp->value);
-			tmp->value = ft_strdup(str[2]);
+			if (str[2])
+				tmp->value = ft_strdup(str[2]);
+			else
+				tmp->value = ft_strdup("\0");
 			return (1);
 		}
 		tmp = tmp->next;
