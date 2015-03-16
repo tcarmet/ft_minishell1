@@ -46,7 +46,9 @@ void	ft_sh_cd(char **str, t_all *all)
 	pwd = getcwd(tmp, 1024);
 	if (str[1] && !str[2])
 	{
-		if (str[1][0] == '-')
+		if (str[1][0] == '-' && str[1][1])
+			ft_putendl_fd("Usage: cd [-][-|<dir>].", 2);
+		else if (str[1][0] == '-')
 			ft_sh_cd_option(all, pwd);
 		else
 			ft_sh_chdir(pwd, all, str[1]);
@@ -70,10 +72,10 @@ void	ft_sh_chdir(char *pwd, t_all *all, char *str)
 	{
 		ft_sh_mod_pwd(all, "OLDPWD", pwd);
 		tmp = NULL;
-		if (pwd)
-			free(pwd);
 		pwd = getcwd(tmp, 1024);
 		ft_sh_mod_pwd(all, "PWD", pwd);
+		if (pwd)
+			free(pwd);
 	}
 }
 
