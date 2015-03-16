@@ -18,3 +18,4 @@ This project was made with [tcoppin](http://github.com/tcoppin)
 - a gerer, si un binaire segfault -> done
 - SHLVL 
 - ~ -> done
+- unsetenv HOME -> modif all->home
