@@ -14,7 +14,7 @@ This project was made with [tcoppin](http://github.com/tcoppin)
 - init env, si env == null -> done
 - leaks -> done
 - split les tab -> done
-- bonus, afficher le path dans le prompt && user (pour tanguy)
-- a gerer, si un binaire segfault
+- bonus, afficher le path dans le prompt && user (pour tanguy) -> done, sauf user
+- a gerer, si un binaire segfault -> done
 - SHLVL 
 - ~ -> done
