@@ -6,7 +6,7 @@
 /*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/15 17:52:16 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/15 17:52:17 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/03/16 18:48:22 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_stock_env(char **envp, t_all *all)
 {
 	t_env	*env;
 	int		i;
-	int 	h;
+	int		h;
 	char	*tmp;
 	char	**env_tab;
 
