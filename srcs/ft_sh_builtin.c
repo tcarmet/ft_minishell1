@@ -50,7 +50,7 @@ void	ft_sh_exit(char **str)
 	i = 0;
 	if (!str[1])
 	{
-		ft_putendl_fd("exit", 2);
+		ft_putendl_fd("exit", 1);
 		exit(0);
 	}
 	else if (str[1])
@@ -60,7 +60,7 @@ void	ft_sh_exit(char **str)
 			if (str[1][i + 1] == '\0')
 			{
 				num = ft_atoi(str[1]);
-				ft_putendl_fd("exit", 2);
+				ft_putendl_fd("exit", 1);
 				exit(num);
 			}
 			i++;
