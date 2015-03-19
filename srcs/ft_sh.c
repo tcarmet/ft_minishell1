@@ -44,10 +44,15 @@ int		ft_put_prompt(void)
 {
 	char	*pwd;
 	char	*tmp;
+	char	*log;
 
+	log = getlogin();
 	tmp = NULL;
 	pwd = getcwd(tmp, 1024);
-	ft_putstr("$> ");
+	ft_putchar('[');
+	ft_putstr(log);
+	ft_putchar(']');
+	ft_putstr(" $> ");
 	if (ft_strequ(pwd, "/"))
 		ft_putstr("/");
 	else
