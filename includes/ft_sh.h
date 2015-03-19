@@ -50,8 +50,6 @@ typedef enum	e_error
 */
 void			ft_sh_init(t_all *all);
 int				ft_sh_check_env(char **env, t_all *all);
-void			ft_term_error(int i);
-void			ft_term_error_2(int i);
 /*
 **	ft_sh_env.c
 */
@@ -110,5 +108,10 @@ void			ft_sh_cd(char **str, t_all *all);
 void			ft_sh_mod_pwd(t_all *all, char *str, char *pwd);
 void			ft_sh_chdir(char *pwd, t_all *all, char *str);
 void			ft_sh_cd_option(t_all *all, char *pwd);
+/*
+**	ft_sh_term_error.c
+*/
+void			ft_term_error(int i);
+void			ft_term_error_2(int i);
 
 #endif
