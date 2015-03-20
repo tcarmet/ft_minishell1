@@ -1,20 +1,14 @@
-# ft_sh
-Work in progress
+# ft_minishell1
 
+<img align="right"  src="http://i.imgur.com/q873GfS.png" width="45%" />
+This is a project of [Ecole 42](https://42.fr)
 
-This project was made with [tcoppin](http://github.com/tcoppin)
-# TO DO LIST
+This program is a mini Unix command interpreter.
+ft_minishell2 will be available soon.
 
-- env, argument a gerer -> done
-- exit -> done ( sounds good ) 
-- setenv -> done
-- unsetenv -> done
-- cd + option -> -  -> done
-- signal (bonus) ctrl c, ctrl d -> sounds good
-- init env, si env == null -> done
-- leaks -> done
-- split les tab -> done
-- bonus, afficher le path dans le prompt && user (pour tanguy) -> done, sauf user
-- a gerer, si un binaire segfault -> done
-- SHLVL 
-- ~ -> done
+This project was made with : [tcoppin](https://github.com/tcoppin)
+<br /><br /><br /><br /><br /><br /><br /><br />
+## Usage
+	$>  make
+	$>  usage: ./ft_minishell1
+
