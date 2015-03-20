@@ -12,3 +12,13 @@ This project was made with : [tcoppin](https://github.com/tcoppin)
 	$>  make
 	$>  usage: ./ft_minishell1
 
+## Builtin available :
+
+   * env
+   * cd
+   * env -i
+   * setenv
+   * unsetenv
+   * exit
+
+  
