@@ -49,15 +49,15 @@ int		ft_put_prompt(void)
 	log = getlogin();
 	tmp = NULL;
 	pwd = getcwd(tmp, 1024);
-	ft_putchar('[');
+	ft_putstr("\033[32m[");
 	ft_putstr(log);
-	ft_putchar(']');
-	ft_putstr(" $> ");
+	ft_putstr("]\033[00m");
+	ft_putstr(" $> \033[34;01m");
 	if (ft_strequ(pwd, "/"))
 		ft_putstr("/");
 	else
 		ft_putstr(ft_strrchr(pwd, '/') + 1);
-	ft_putstr(" : ");
+	ft_putstr("\033[00m : ");
 	free(pwd);
 	return (1);
 }
