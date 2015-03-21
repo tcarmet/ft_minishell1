@@ -6,7 +6,7 @@
 /*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/12 16:57:19 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/11 20:12:35 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/03/21 12:41:13 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static char		**split_func(char *str, int nb_words, int *i, char ch)
 		i[1] += word_size;
 		i[0]++;
 	}
-	result[i[0]] = '\0';
+	result[i[0]] = 0;
 	return (result);
 }
 

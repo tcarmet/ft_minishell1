@@ -6,7 +6,7 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/03/19 11:13:27 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/03/21 12:45:48 by tcoppin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,7 +22,7 @@ SRC 		= ft_sh.c ft_sh_env.c ft_sh_parse.c ft_sh_built_env.c ft_sh_init.c \
 			ft_sh_builtin.c ft_sh_misc.c ft_sh_binary.c ft_sh_cd.c ft_sh_term_error.c
 OBJ 		= $(SRC:.c=.o)
 INC 		= ft_sh.h
-LIBFLAGS 	= -L./libft/ -lft
+LIBFLAGS 	= ./libft/libft.a
 SRCDIR  	= ./srcs/
 OBJDIR  	= ./
 INCDIRLIB	= ./libft/includes/
@@ -35,17 +35,17 @@ INCS 		= $(addprefix $(INCDIR), $(INC))
 
 all : 		$(NAME)
 
-$(NAME) :	$(INCS)
+$(NAME) :
 ifeq ($(DEBUG),yes)
 		echo "\\033[1;31mDEBUG COMPILATION.. (no flags except -g)\\033[0;39m"
 else
 		echo "\\033[1;31mCompilation with -Wall -Wextra -Werror...\\033[0;39m"
 endif
 		echo "\\033[1;34mGenerating objects... Please wait.\\033[0;39m"
-			gcc $(FLAGS) -c $(SRCS) -I$(INCDIR) $(LIBFLAGS) -I$(INCDIRLIB)
-			echo "compiling $(NAME)..."
 			Make -C libft/
-			gcc $(FLAGS) -o $(NAME) $(OBJS) $(LIBFLAGS)
+			gcc $(FLAGS) -c $(SRCS) -I $(INCDIR) -I $(INCDIRLIB)
+			echo "compiling $(NAME)..."
+			gcc $(FLAGS) -o $(NAME) $(OBJS) -L./libft -lft
 			echo "$(NAME) has been created !"
 
 .PHONY: 	clean fclean re

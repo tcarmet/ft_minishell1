@@ -6,7 +6,7 @@
 /*   By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 17:24:53 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/15 17:49:44 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/03/21 12:20:46 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ pid_t	save_pid(pid_t pid)
 
 void	ft_control(int i)
 {
-	i = i;
+	(void)i;
 	if (save_pid(0) <= 0)
 	{
 		ft_putchar(8);
