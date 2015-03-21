@@ -61,11 +61,8 @@ void			ft_sh_env(char **str, t_all *all);
 /*
 ** ft_sh_misc.c
 */
-//char			*ft_strlower(char *str);
 void			ft_sh_error(int i, char *str);
 char			*ft_leave_tab(char *cmd);
-//size_t			ft_strlen_tab(char **tab);
-//void			free_tb(char ***s);
 /*
 ** ft_sh_parse.c
 */
