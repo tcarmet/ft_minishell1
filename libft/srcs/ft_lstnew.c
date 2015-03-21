@@ -6,7 +6,7 @@
 /*   By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 17:07:12 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/01/08 15:53:10 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/03/21 13:29:31 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 {
 	t_list *ptr;
 
+	ptr = NULL;
 	if (!content || !content_size)
 	{
 		if ((ptr = (t_list *)malloc(sizeof(t_list))) == NULL)
