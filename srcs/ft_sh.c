@@ -6,7 +6,7 @@
 /*   By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 17:24:53 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/21 12:20:46 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/03/21 13:16:29 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	parse_cmd(char *cmd, t_all *all)
 				ft_exec_binary(cmd_array, all);
 			else
 				ft_sh_error(SYSCALL, cmd_array[0]);
-			free_tb(&cmd_array);
+			ft_free_tb(&cmd_array);
 		}
 		i++;
 	}
-	free_tb(&cmd_all);
+	ft_free_tb(&cmd_all);
 }
 
 int		ft_put_prompt(void)

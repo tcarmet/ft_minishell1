@@ -6,7 +6,7 @@
 /*   By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 18:03:27 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/15 17:41:00 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/03/21 13:12:41 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ void			ft_sh_env(char **str, t_all *all);
 /*
 ** ft_sh_misc.c
 */
-char			*ft_strlower(char *str);
+//char			*ft_strlower(char *str);
 void			ft_sh_error(int i, char *str);
 char			*ft_leave_tab(char *cmd);
-size_t			ft_strlen_tab(char **tab);
-void			free_tb(char ***s);
+//size_t			ft_strlen_tab(char **tab);
+//void			free_tb(char ***s);
 /*
 ** ft_sh_parse.c
 */

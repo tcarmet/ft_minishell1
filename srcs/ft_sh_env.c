@@ -6,7 +6,7 @@
 /*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/15 17:52:16 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/16 18:48:22 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/03/21 13:15:17 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_stock_env(char **envp, t_all *all)
 			all->home = ft_strdup(env_tab[1]);
 			h = 1;
 		}
-		free_tb(&env_tab);
+		ft_free_tb(&env_tab);
 		ft_sh_push(all, env);
 		i++;
 	}

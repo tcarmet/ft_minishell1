@@ -6,7 +6,7 @@
 /*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/15 17:50:00 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/15 17:50:00 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/03/21 13:17:18 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		ft_check_binary(char **split, struct stat stat, t_all *all, char *str)
 		all->path = ft_strjoin_free(all->path, str);
 		if (access(all->path, X_OK) == 0)
 		{
-			free_tb(&split);
+			ft_free_tb(&split);
 			return (1);
 		}
 		if (all->path)
@@ -85,7 +85,7 @@ int		ft_is_binary(char *str, t_all *all)
 	split = ft_strsplit(tmp->value, ':');
 	if (ft_check_binary(split, s, all, str))
 		return (1);
-	free_tb(&split);
+	ft_free_tb(&split);
 	tmp = NULL;
 	return (0);
 }
@@ -118,6 +118,6 @@ void	ft_exec_binary(char **str, t_all *all)
 		waitpid(all->pid, &status, WUNTRACED);
 	ft_term_error(WTERMSIG(status));
 	save_pid(-1);
-	free_tb(&all->array);
+	ft_free_tb(&all->array);
 	free(all->path);
 }

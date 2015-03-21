@@ -12,21 +12,21 @@
 
 #include "ft_sh.h"
 
-char	*ft_strlower(char *str)
-{
-	int i;
+// char	*ft_strlower(char *str)
+// {
+// 	int i;
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] >= 65 && str[i] <= 90)
-			str[i] = str[i] + 32;
-		else
-			str[i] = str[i];
-		i++;
-	}
-	return (str);
-}
+// 	i = 0;
+// 	while (str[i])
+// 	{
+// 		if (str[i] >= 65 && str[i] <= 90)
+// 			str[i] = str[i] + 32;
+// 		else
+// 			str[i] = str[i];
+// 		i++;
+// 	}
+// 	return (str);
+// }
 
 void	ft_sh_error(int i, char *str)
 {
@@ -69,27 +69,27 @@ char	*ft_leave_tab(char *cmd)
 	return (cmd);
 }
 
-size_t	ft_strlen_tab(char **tab)
-{
-	int i;
+// size_t	ft_strlen_tab(char **tab)
+// {
+// 	int i;
 
-	i = 0;
-	while (tab[i])
-		i++;
-	return (i);
-}
+// 	i = 0;
+// 	while (tab[i])
+// 		i++;
+// 	return (i);
+// }
 
-void	free_tb(char ***s)
-{
-	int	i;
+// void	free_tb(char ***s)
+// {
+// 	int	i;
 
-	i = 0;
-	while ((*s)[i])
-	{
-		free((*s)[i]);
-		(*s)[i] = NULL;
-		i++;
-	}
-	free(*s);
-	*s = NULL;
-}
+// 	i = 0;
+// 	while ((*s)[i])
+// 	{
+// 		free((*s)[i]);
+// 		(*s)[i] = NULL;
+// 		i++;
+// 	}
+// 	free(*s);
+// 	*s = NULL;
+// }

@@ -6,7 +6,7 @@
 /*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/15 17:52:29 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/15 17:52:30 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/03/21 13:15:40 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ int		ft_sh_check_env(char **env, t_all *all)
 	str[3] = NULL;
 	all->home = ft_strdup(str[2]);
 	ft_sh_setenv(str, all);
-	free_tb(&str);
+	ft_free_tb(&str);
 	str = (char **)malloc(sizeof(char *) * 4);
 	str[0] = ft_strdup("setenv");
 	str[1] = ft_strdup("SHLVL");
 	str[2] = ft_strdup("1");
 	str[3] = NULL;
 	ft_sh_setenv(str, all);
-	free_tb(&str);
+	ft_free_tb(&str);
 	return (0);
 }
 
