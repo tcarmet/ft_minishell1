@@ -12,6 +12,10 @@
 
 #include "ft_sh.h"
 
+/*
+**	This function will put the environment into an array of string
+**	we will use this array in execve.
+*/
 void	ft_env_to_array(t_all *all)
 {
 	t_env	*tmp;

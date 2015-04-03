@@ -12,6 +12,11 @@
 
 #include "ft_sh.h"
 
+/*
+**	in this function we will parse the command line, in the first place we will
+**	check if the argument given is a builtin, if not it will try to execute it.
+*/
+
 void	parse_cmd(char *cmd, t_all *all)
 {
 	char	**cmd_array;
@@ -39,6 +44,11 @@ void	parse_cmd(char *cmd, t_all *all)
 	}
 	ft_free_tb(&cmd_all);
 }
+
+/*
+**	ft_put_prompt will print the prompt, getlogin is used for project bonus.
+**	and also we use strrchr to print to current directory.
+*/
 
 int		ft_put_prompt(void)
 {
@@ -84,6 +94,13 @@ void	ft_control(int i)
 		ft_putchar(8);
 	}
 }
+
+/*
+**	the main will in the first place check if there is a environment and then
+**	it will stock the environment into the linked list. if no environment is 
+**	given we will create a mini one.
+**	once this step is done the program will enter into a infinite loop.
+*/
 
 int		main(int argc, char **argv, char **env)
 {
