@@ -45,6 +45,11 @@ void	ft_env_to_array(t_all *all)
 	all->array[count] = NULL;
 }
 
+/*
+**	in this function we will see with access if we have the rights of 
+**	execution of the requested file.
+*/
+
 int		ft_check_binary(char **split, struct stat stat, t_all *all, char *str)
 {
 	int	i;
@@ -66,6 +71,13 @@ int		ft_check_binary(char **split, struct stat stat, t_all *all, char *str)
 	}
 	return (0);
 }
+
+/*
+**	ft_is_binary while in the first place check if the file we want to execute
+**	is in the current directory. "./a.out". 
+**	Otherwise it will get the PATH value split it and stock to right path 
+**	to the binary file into all->path, and we will use it into execve.
+*/
 
 int		ft_is_binary(char *str, t_all *all)
 {
@@ -99,6 +111,14 @@ void	ft_sh_exec_error(char *str)
 	ft_putstr_fd(str, 2);
 	ft_putendl_fd(": Permission denied.", 2);
 }
+
+/*
+**	in this function we will execute the program called and wait till the processus
+**	is finished to restore the shell. if we have no rights or so, ft_sh_exec_error
+**	is called. Also if the program we execute happen to crash (bus error, Segmentation
+**	fault...) ft_term_error will catch the right signal and show the right error to the
+**	user.
+*/
 
 void	ft_exec_binary(char **str, t_all *all)
 {

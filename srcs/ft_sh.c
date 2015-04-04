@@ -81,6 +81,10 @@ pid_t	save_pid(pid_t pid)
 	return (spid);
 }
 
+/*
+**	this function is called when a signal is catched and it will errase the
+**	signal character.
+*/
 void	ft_control(int i)
 {
 	(void)i;
