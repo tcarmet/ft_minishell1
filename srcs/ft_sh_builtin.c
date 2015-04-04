@@ -6,12 +6,15 @@
 /*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/15 17:51:39 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/15 17:51:39 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/04/05 01:02:50 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh.h"
 
+/*
+**	ft_is_builtin will check if the argument is a builtin.
+*/
 int		ft_is_builtin(char *str)
 {
 	if (ft_strequ("env", str))
@@ -28,6 +31,9 @@ int		ft_is_builtin(char *str)
 		return (0);
 }
 
+/*
+**	ft_exec_builtin will execute the right builtin.
+*/
 void	ft_exec_builtin(char **str, t_all *all)
 {
 	if (ft_strequ("env", str[0]))
@@ -42,6 +48,9 @@ void	ft_exec_builtin(char **str, t_all *all)
 		ft_sh_cd(str, all);
 }
 
+/*
+**	ft_sh_exit will exit the minishell when the exit builtin is called.
+*/
 void	ft_sh_exit(char **str)
 {
 	int		i;

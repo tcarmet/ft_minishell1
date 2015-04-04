@@ -6,12 +6,15 @@
 /*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/09 21:31:59 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/15 17:51:21 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/04/05 00:52:32 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh.h"
 
+/*
+**	this function will print the environment.
+*/
 void	ft_print_env(t_all *all)
 {
 	t_env	*tmp;
@@ -26,12 +29,17 @@ void	ft_print_env(t_all *all)
 			if (tmp->value)
 				ft_putendl(tmp->value);
 			else
-				ft_putstr("\n");
+				ft_putchar('\n');
 		}
 		tmp = tmp->next;
 	}
 }
 
+/*
+**	this function is part of the setenv builtin and will check if
+**	the env that we are setting already exist, and will replace the 
+**	value if it is required.
+*/
 int		ft_setenv_check(char **str, t_all *all)
 {
 	t_env	*tmp;
@@ -53,6 +61,10 @@ int		ft_setenv_check(char **str, t_all *all)
 	return (0);
 }
 
+/*
+**	ft_sh_setenv is the main function of the setenv builtin and it 
+**	will set the environment and put it into the linked list.
+*/
 void	ft_sh_setenv(char **str, t_all *all)
 {
 	t_env	*tmp;
@@ -96,6 +108,11 @@ void	ft_sh_list_search(t_env *prev, char **str, int i)
 	}
 }
 
+/*
+**	ft_sh_unsetenv is the main function of the unsetenv built in, and 
+**	it will search into the the linked list the argument that we are looking
+**	to unset, and it will free him.
+*/
 int		ft_sh_unsetenv(char **str, t_all *all)
 {
 	t_env	*prev;
