@@ -6,12 +6,15 @@
 /*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/19 11:11:49 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/19 11:11:56 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/04/05 21:23:14 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh.h"
 
+/*
+** ft_term_error will show the right error message when a program crash.
+*/
 void	ft_term_error(int i)
 {
 	if (i <= 0 || i == 2 || (i >= 16 && i <= 23) || i == 28 || i == 29)
