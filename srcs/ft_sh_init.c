@@ -6,12 +6,15 @@
 /*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/15 17:52:29 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/21 13:15:40 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/04/05 18:09:47 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh.h"
 
+/*
+**	this function will initialize the struct's variable.
+*/
 void	ft_sh_init(t_all *all)
 {
 	all->env = NULL;
@@ -21,6 +24,10 @@ void	ft_sh_init(t_all *all)
 	all->pid = 0;
 }
 
+/*
+**	ft_sh_check_env will verify if there is an environment.
+**	if there isn't we will create a mini one.
+*/
 int		ft_sh_check_env(char **env, t_all *all)
 {
 	char	**str;

@@ -6,12 +6,15 @@
 /*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/15 17:51:52 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/15 17:51:56 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/04/05 18:03:13 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh.h"
 
+/*
+**	This function will modify the pwd.
+*/
 void	ft_sh_mod_pwd(t_all *all, char *str, char *pwd)
 {
 	t_env	*env;
@@ -37,6 +40,10 @@ void	ft_sh_mod_pwd(t_all *all, char *str, char *pwd)
 	env->value = ft_strdup(pwd);
 }
 
+/*
+**	ft_sh_cd is the main function of the cd builtin. it will choose
+**	wich behavement cd will have.
+*/
 void	ft_sh_cd(char **str, t_all *all)
 {
 	char	*pwd;
@@ -61,6 +68,9 @@ void	ft_sh_cd(char **str, t_all *all)
 		free(pwd);
 }
 
+/*
+**	ft_sh_chdir will change the directory 
+*/
 void	ft_sh_chdir(char *pwd, t_all *all, char *str)
 {
 	char	*tmp;
@@ -78,6 +88,11 @@ void	ft_sh_chdir(char *pwd, t_all *all, char *str)
 			free(pwd);
 	}
 }
+
+/*
+**	ft_sh_cd_option will look for the OLDPWD value. and will change
+**	the directory path.
+*/
 
 void	ft_sh_cd_option(t_all *all, char *pwd)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sh.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 17:24:53 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/21 13:16:29 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/04/05 01:40:53 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ void	ft_control(int i)
 		ft_putchar(32);
 		ft_putchar(8);
 		ft_putchar(8);
+		ft_putchar('\n');
+		ft_put_prompt();
 	}
 }
 

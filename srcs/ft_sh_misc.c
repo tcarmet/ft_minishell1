@@ -6,12 +6,15 @@
 /*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/15 17:53:07 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/03/15 17:53:07 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/04/05 18:13:57 by tcarmet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh.h"
 
+/*
+**	ft_sh_error is called when a error message is needed.
+*/
 void	ft_sh_error(int i, char *str)
 {
 	if (i == SYSCALL)
@@ -39,6 +42,10 @@ void	ft_sh_error(int i, char *str)
 	}
 }
 
+/*
+**	ft_leave_tab will look into the command line if there is a 
+**	tab character, and will replace it by a space character.
+*/
 char	*ft_leave_tab(char *cmd)
 {
 	int i;

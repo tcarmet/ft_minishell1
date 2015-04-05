@@ -6,7 +6,7 @@
 #    By: tcarmet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/16 17:42:06 by tcarmet           #+#    #+#              #
-#    Updated: 2015/03/31 22:01:44 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/04/05 16:47:20 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -24,7 +24,7 @@ OBJ 		= $(SRC:.c=.o)
 INC 		= ft_sh.h
 LIBFLAGS 	= ./libft/libft.a
 SRCDIR  	= ./srcs/
-OBJDIR  	= ./
+OBJDIR  	= ./objs/
 INCDIRLIB	= ./libft/includes/
 INCDIR		= ./includes/
 SRCS    	= $(addprefix $(SRCDIR), $(SRC))
@@ -44,6 +44,8 @@ endif
 		echo "\\033[1;34mGenerating objects... Please wait.\\033[0;39m"
 			Make -C libft/
 			gcc $(FLAGS) -c $(SRCS) -I $(INCDIR) -I $(INCDIRLIB)
+			mkdir -p $(OBJDIR)
+			mv $(OBJ) $(OBJDIR)
 			echo "compiling $(NAME)..."
 			gcc $(FLAGS) -o $(NAME) $(OBJS) -L./libft -lft
 			echo "$(NAME) has been created !"
@@ -53,6 +55,7 @@ endif
 clean : 
 			Make -C ./libft/ clean
 			rm -rf $(OBJS)
+			rm -rf $(OBJDIR)
 			echo "objects files has been removed !"
 
 fclean :	clean
